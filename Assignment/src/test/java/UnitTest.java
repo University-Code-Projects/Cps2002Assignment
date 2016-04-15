@@ -17,30 +17,48 @@ import static org.junit.Assert.*;
  */
 public class UnitTest {
     
+    /**
+     *
+     */
     public UnitTest() {
     }
     
+    /**
+     *
+     */
     @BeforeClass
     public static void setUpClass() {
     }
     
+    /**
+     *
+     */
     @AfterClass
     public static void tearDownClass() {
     }
     
     Book book = new Book();    
     
+    /**
+     *
+     */
     @Before
     public void Book() {
         book = new Book();
         
     }
     
+    /**
+     *
+     */
     @After
     public void Book1() {
         book = null;
     }
 
+    /**
+     *
+     */
     @Test
     public void title_return_0(){
         book.setTitle("Life");
