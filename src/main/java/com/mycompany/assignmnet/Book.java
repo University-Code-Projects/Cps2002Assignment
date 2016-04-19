@@ -20,10 +20,13 @@ public class Book {
     private Date yrOfPub;
 
     public Book() {
-        
+        this.isbn = 0;
+        this.title = "";
+        this.author = "";
+        this.edition = 0;
+        this.genre = null;
+        this.yrOfPub = new Date();
     }
-
-    
     
     public Book(int isbn, String title, String author, Genre genre) {
         this.isbn = isbn;
@@ -87,10 +90,6 @@ public class Book {
 
     public void setYrOfPub(Date yrOfPub) {
         this.yrOfPub = yrOfPub;
-    }
-    
-    public static void main(String[] args){
-        System.out.print("Test");
     }
 }
 

@@ -19,6 +19,29 @@ public class User {
     private String nationality;
     private Date dob; 
 
+    public User(){
+        
+    }
+
+    public User(String name, String surname, int id) {
+        this.name = name;
+        this.surname = surname;
+        this.id = id;
+        this.address = "Unknown";
+        this.dob = new  Date();
+        this.address = "Unknown";
+    }
+
+    public User(String name, String surname, String address, String email, int id, String nationality, Date dob) {
+        this.name = name;
+        this.surname = surname;
+        this.address = address;
+        this.email = email;
+        this.id = id;
+        this.nationality = nationality;
+        this.dob = dob;
+    }
+    
     public String getName() {
         return name;
     }
