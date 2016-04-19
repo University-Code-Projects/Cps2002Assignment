@@ -25,7 +25,7 @@ public class Library {
     }
     
     public void addUser(User newUser){
-            users.add(newUser);
+        users.add(newUser);
         
     }
     
