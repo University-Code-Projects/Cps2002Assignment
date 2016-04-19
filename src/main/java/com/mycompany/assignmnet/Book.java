@@ -12,11 +12,38 @@ import java.util.*;
  */
 public class Book {
        
+    private int isbn;
     private String title;
     private String author;
     private int edition;
     private Genre genre;
     private Date yrOfPub;
+
+    public Book() {
+        
+    }
+
+    
+    
+    public Book(int isbn, String title, String author, Genre genre) {
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+    }
+      
+    public Book(int isbn, String title, String author, int edition, Genre genre, Date yrOfPub) {
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.edition = edition;
+        this.genre = genre;
+        this.yrOfPub = yrOfPub;
+    }
+    
+    public int getIsbn() {
+        return isbn;
+    }
     
     public String getTitle() {
         return title;
@@ -36,6 +63,10 @@ public class Book {
 
     public Date getYrOfPub() {
         return yrOfPub;
+    }
+    
+    public void setIsbn(int isbn) {
+        this.isbn = isbn;
     }
     
     public void setTitle(String title) {
