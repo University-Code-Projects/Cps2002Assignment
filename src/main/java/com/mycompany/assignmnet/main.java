@@ -15,8 +15,7 @@ public class main {
     public static void main(String[] args){
         System.out.print("Test");
         Scanner in = new Scanner(System.in);
-        Scanner val = new Scanner(System.in);
-
+        
         int input =0;
         int value;
         

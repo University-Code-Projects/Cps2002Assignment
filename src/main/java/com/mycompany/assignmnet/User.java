@@ -28,7 +28,6 @@ public class User {
         this.surname = surname;
         this.id = id;
         this.address = "Unknown";
-        this.dob = new  Date();
         this.address = "Unknown";
     }
 
