@@ -20,9 +20,32 @@ public class Catalogue {
 
     //private int size;
 
-    public void addBook(Book book){
-        Genre gen = book.getGenre();
+    public boolean newBookInfo(int isbn, String title, String author, int edition, Genre genre, Date yrOfPub){
+        Book newBook = new Book(isbn, title, author, edition, genre, yrOfPub);
+        if(validBook(newBook)){
+            System.err.println("Book already exists");
+            return false;
+        }else{
+            addBook(newBook);
+            return true;
+        }
+    }
+    
+    public boolean validBook(Book check){
+        int isbn = check.getIsbn();
+        boolean flag = false;
+        int size;
+
+        return flag;
+    }
+
+    
+    public void addBook(Book newBook){
         
+    }
+    
+    public boolean removeUser(User deleteUser){
+        return false;
     }
     
     public void getAllBook(){

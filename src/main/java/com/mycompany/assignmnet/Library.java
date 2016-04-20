@@ -24,7 +24,7 @@ public class Library {
         cat = new Catalogue();
     }
     
-    public boolean newUserInfo(String name, String surname, String address, String email, int id, String nationality, Date dob){           
+    public boolean newUserInfo(String name, String surname, String address, String email, int id, String nationality, Date dob){
         User newUser = new User(name, surname, address, email, id, nationality, dob);
         if(validUser(newUser)){
             System.err.println("User already exists");
@@ -35,7 +35,7 @@ public class Library {
         }
     }
     
-        public boolean newUserInfo(String name, String surname, int id){           
+    public boolean newUserInfo(String name, String surname, int id){
         User newUser = new User(name, surname, id);
         if(validUser(newUser)){
             System.err.println("User already exists");
@@ -49,7 +49,7 @@ public class Library {
     public void addUser(User newUser){
         User user = new User();
         if(!users.isEmpty()){
-            user = users.get(users.size() - 1); 
+            user = users.get(users.size() - 1);
             int i = user.getLibId();
             user.setLibId(++i);
         }else{
@@ -74,7 +74,6 @@ public class Library {
                 }
             }
         }
-        
         return flag;
     }
     
@@ -88,7 +87,11 @@ public class Library {
                 users.remove(deleteUser);
                 flag = true;
             }
-        } 
+        }
         return flag;
     }
+    
+    //to implement loanBookTo(Book,User)
+    //to implement returnBook(Book)
+    
 }
