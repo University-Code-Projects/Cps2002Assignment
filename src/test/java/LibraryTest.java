@@ -50,7 +50,7 @@ public class LibraryTest {
     @Test
     public void is_Valid_User() {
         int id = 1;
-        assertEquals(true,libr.validUser(id));
+        assertEquals(true,libr.validUser(user));
     }
     
 }

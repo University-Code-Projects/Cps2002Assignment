@@ -18,9 +18,9 @@ public class User {
     private int id;
     private String nationality;
     private Date dob; 
+    private int libId;
 
     public User(){
-        
     }
 
     public User(String name, String surname, int id) {
@@ -41,6 +41,11 @@ public class User {
         this.dob = dob;
     }
     
+    
+    public void setUserId(int id){
+        this.libId = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -61,6 +66,10 @@ public class User {
         return id;
     }
 
+    public int getLibId() {
+        return libId;
+    }
+    
     public String getNationality() {
         return nationality;
     }
@@ -96,4 +105,8 @@ public class User {
     public void setDob(Date dob) {
         this.dob = dob;
     }   
+
+    public void setLibId(int libId) {
+        this.libId = libId;
+    }
 }
