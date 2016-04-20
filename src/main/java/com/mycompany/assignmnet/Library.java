@@ -86,6 +86,7 @@ public class Library {
         }else{
             if(validUser(deleteUser)){
                 users.remove(deleteUser);
+                flag = true;
             }
         } 
         return flag;

@@ -48,16 +48,37 @@ public class LibraryTest {
     }
     
     @Test
-    public void add_Valid_User() {
-        assertEquals(true,libr.validUser(user));
+    public void add_User() {//adding a new user with different id
+        assertEquals(true,libr.newUserInfo("Test Name", "Test surname",2));
     }
 
     @Test
-    public void add_Valid_User_1() {//user already exists
+    public void add_User_1() {//user already exists since id already exists
         User user1 = new User("Test Name", "Test surname",1);
         assertEquals(false,libr.newUserInfo("Test Name", "Test surname",1));
     }
     
-    
-    
+    @Test
+    public void delete_User() {//delete an existing user
+        User user1 = new User("Test Name", "Test surname",1);
+        assertEquals(true,libr.removeUser(user1));
+    }
+   
+    @Test
+    public void delete_User1() {//delete a user that has been deleted already
+        libr.removeUser(user);
+        assertEquals(false,libr.removeUser(user));
+    }
+
+    @Test
+    public void valid_User() {//checking for an invlaid user (since id was not set)
+        User user1= new User();
+        assertEquals(false,libr.validUser(user1));
+    }
+
+    @Test
+    public void valid_User1() {//checking for a valid user
+        User user1 = new User("Test Name", "Test surname",1);
+        assertEquals(true,libr.validUser(user1));
+    }
 }
