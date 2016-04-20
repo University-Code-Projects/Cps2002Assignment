@@ -36,21 +36,28 @@ public class LibraryTest {
     User user = new User("Test Name", "Test surname",1);
     
     @Before
-    public void Calculator() {
+    public void Library() {
         libr = new Library();
         user = new User("Test Name", "Test surname",1);
         libr.addUser(user);
     }
     
     @After
-    public void Calculator1() {
+    public void Libray1() {
         libr = null;
     }
     
     @Test
-    public void is_Valid_User() {
-        int id = 1;
+    public void add_Valid_User() {
         assertEquals(true,libr.validUser(user));
     }
+
+    @Test
+    public void add_Valid_User_1() {//user already exists
+        User user1 = new User("Test Name", "Test surname",1);
+        assertEquals(false,libr.newUserInfo("Test Name", "Test surname",1));
+    }
+    
+    
     
 }

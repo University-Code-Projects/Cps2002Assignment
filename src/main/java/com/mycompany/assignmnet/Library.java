@@ -24,12 +24,25 @@ public class Library {
         cat = new Catalogue();
     }
     
-    public void newUserInfo(String name, String surname, String address, String email, int id, String nationality, Date dob){           
+    public boolean newUserInfo(String name, String surname, String address, String email, int id, String nationality, Date dob){           
         User newUser = new User(name, surname, address, email, id, nationality, dob);
         if(validUser(newUser)){
             System.err.println("User already exists");
+            return false;
         }else{
             addUser(newUser);
+            return true;
+        }
+    }
+    
+        public boolean newUserInfo(String name, String surname, int id){           
+        User newUser = new User(name, surname, id);
+        if(validUser(newUser)){
+            System.err.println("User already exists");
+            return false;
+        }else{
+            addUser(newUser);
+            return true;
         }
     }
     
@@ -43,8 +56,6 @@ public class Library {
             int i = 0;
             user.setLibId(++i);
         }
-        
-        
         users.add(newUser);
     }
     
