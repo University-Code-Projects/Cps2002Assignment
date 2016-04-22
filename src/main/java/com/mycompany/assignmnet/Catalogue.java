@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.assignmnet;
+import java.text.SimpleDateFormat;
 import java.util.*;
 /**
  *
@@ -22,7 +23,7 @@ public class Catalogue {
 
     //private int size;
 
-    public boolean newBookInfo(int isbn, String title, String author, int edition, Genre genre, Date yrOfPub){
+    public boolean newBookInfo(int isbn, String title, String author, int edition, Genre genre, SimpleDateFormat yrOfPub){
         Book newBook = new Book(isbn, title, author, edition, genre, yrOfPub);
         if(validBook(newBook)){
             System.err.println("Book already exists");

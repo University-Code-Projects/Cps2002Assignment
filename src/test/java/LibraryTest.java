@@ -6,6 +6,10 @@
 
 import com.mycompany.assignmnet.Library;
 import com.mycompany.assignmnet.User;
+import com.mycompany.assignmnet.Book;
+import com.mycompany.assignmnet.Genre;
+import com.mycompany.assignmnet.*;
+import java.text.SimpleDateFormat;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,11 +38,15 @@ public class LibraryTest {
     // The methods must be annotated with annotation @Test. For example:
     Library libr = new Library();
     User user = new User("Test Name", "Test surname",1);
+    Catalogue cat = new Catalogue();    
     
     @Before
     public void Library() {
         libr = new Library();
         user = new User("Test Name", "Test surname",1);
+        Genre genre = new Genre();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("28-FE-2015");
+        Book book = new Book(123456, "Life in CS", "Karl Borg", 1, genre, dateFormat);
         libr.addUser(user);
     }
     
@@ -81,4 +89,12 @@ public class LibraryTest {
         User user1 = new User("Test Name", "Test surname",1);
         assertEquals(true,libr.validUser(user1));
     }
+    /*
+    @Test
+    public void add_book() {//checking for a valid book
+        Genre genre = new Genre();
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("28-FE-2015");
+        Book book1 = new Book(123456, "Life in CS", "Karl Borg", 1, genre, dateFormat1);  
+        assertEquals(true,book.validBook(book1));
+    }*/
 }

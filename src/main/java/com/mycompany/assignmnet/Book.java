@@ -5,6 +5,7 @@
  */
 package com.mycompany.assignmnet;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 /**
  *
@@ -17,7 +18,7 @@ public class Book {
     private String author;
     private int edition;
     private Genre genre;
-    private Date yrOfPub;
+    private SimpleDateFormat yrOfPub;
 
     public Book() {
         this.isbn = 0;
@@ -25,7 +26,7 @@ public class Book {
         this.author = "";
         this.edition = 0;
         this.genre = null;
-        this.yrOfPub = new Date();
+        this.yrOfPub = new SimpleDateFormat();
     }
     
     public Book(int isbn, String title, String author, Genre genre) {
@@ -34,8 +35,8 @@ public class Book {
         this.author = author;
         this.genre = genre;
     }
-      
-    public Book(int isbn, String title, String author, int edition, Genre genre, Date yrOfPub) {
+      //delete a constructor 
+    public Book(int isbn, String title, String author, int edition, Genre genre, SimpleDateFormat yrOfPub) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
@@ -64,7 +65,7 @@ public class Book {
         return genre;
     }
 
-    public Date getYrOfPub() {
+    public SimpleDateFormat getYrOfPub() {
         return yrOfPub;
     }
     
@@ -88,7 +89,7 @@ public class Book {
         this.genre = genre;
     }
 
-    public void setYrOfPub(Date yrOfPub) {
+    public void setYrOfPub(SimpleDateFormat yrOfPub) {
         this.yrOfPub = yrOfPub;
     }
 }
