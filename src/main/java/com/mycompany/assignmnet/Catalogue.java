@@ -12,10 +12,12 @@ import java.util.*;
 public class Catalogue {
     private ArrayList<ArrayList<Genre>> listOfGenres = new ArrayList<ArrayList<Genre>>();
     private ArrayList<Genre> singleGenre = new ArrayList<Genre>();
+    private ArrayList<Book> book ;
 
     public Catalogue(){
         listOfGenres = null;
         singleGenre = null;
+        book = new ArrayList<Book>();
     }
 
     //private int size;
@@ -34,14 +36,18 @@ public class Catalogue {
     public boolean validBook(Book check){
         int isbn = check.getIsbn();
         boolean flag = false;
-        int size;
-
+        for(Book temp : book){
+            if(temp.getIsbn() == isbn){
+                flag = true;
+                break;
+            }
+        }
         return flag;
     }
 
     
     public void addBook(Book newBook){
-        
+        book.add(newBook);
     }
     
     public boolean removeUser(User deleteUser){
@@ -49,7 +55,13 @@ public class Catalogue {
     }
     
     public void getAllBook(){
-        
-        
+        for(Book temp : book){
+            System.out.println("Book Title: "+ temp.getTitle());
+            System.out.print("\tAuthor: "+ temp.getAuthor());
+            System.out.print("\tISBN: "+ temp.getIsbn());
+            System.out.print("\tEdition: "+ temp.getEdition());
+            System.out.print("\tGenre: "+ temp.getGenre());
+            System.out.print("\tYear of Publication: "+ temp.getYrOfPub());
+        }
     }
 }
