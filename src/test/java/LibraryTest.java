@@ -95,15 +95,37 @@ public class LibraryTest {
         assertEquals(true,libr.validUser(user1));
     }
     
-@Test
-    public void add_Book() {//adding a new user with different id
+    @Test
+    public void add_Book() {//adding a new book with different isbn
         assertEquals(true,cat.newBookInfo(1, "Life in CS", "Karl Borg", 1, genre, dateFormat));
     }
 
     @Test
-    public void add_Book_1() {//user already exists since id already exists
+    public void add_Book_1() {//user already exists since isbn already exists
         Book book1 = new Book(123, "Life in CS", "Karl Borg", 1, genre, dateFormat);
         assertEquals(false,cat.newBookInfo(123, "Life in CS", "Karl Borg", 1, genre, dateFormat));
     }
     
+    @Test
+    public void delete_Book() {//delete an existing book
+        User user1 = new User("Test Name", "Test surname",1);
+        assertEquals(true,libr.removeUser(user1));
+    }
+   
+    @Test
+    public void delete_Book1() {//delete a book that has been deleted already
+        cat.removeBook(book);
+        assertEquals(false,cat.removeBook(book));
+    }
+
+    @Test
+    public void valid_Book() {//checking for an invlaid book (since isbn was not set)
+        Book book1= new Book();
+        assertEquals(false,cat.validBook(book1));
+    }
+
+    @Test
+    public void valid_Book1() {//checking for a valid book
+        assertEquals(true,cat.validBook(book));
+    }
 }
