@@ -10,6 +10,7 @@ import com.mycompany.assignmnet.Book;
 import com.mycompany.assignmnet.Genre;
 import com.mycompany.assignmnet.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -156,5 +157,47 @@ public class LibraryTest {
         Book book1= new Book();
         assertEquals(false,libr.returnBook(book1));
     }
-     
+
+    @Test
+    public void search_Title() {//returning a list of books having a that title in their name
+        ArrayList<Book> expected = new ArrayList<Book>();
+        ArrayList<Book> actual = new ArrayList<Book>();
+        //Library libr1 = new Library();
+        Library libr2 = new Library();
+        Book book1 = new Book(86551, "Life in CS", "Karl Borg", 1, genre, dateFormat);
+        Book book2 = new Book(74866, "Life in CS", "Karl Borg", 1, genre, dateFormat);
+        Book book3 = new Book(98568, "Life in CS", "Karl Borg", 1, genre, dateFormat);
+        Book book4 = new Book(98578, "Life in AI", "Karl Borg", 1, genre, dateFormat);
+        
+        //libr1.Book(1, book1);
+        //libr1.Book(1, book2);
+        //libr1.Book(1, book3);   
+        
+        //actual = libr1.searchByTitle("Life in CS");
+        expected.add(book1);
+        expected.add(book2);
+        expected.add(book3);
+        //expected.add(book4);
+        
+        libr2.Book(1, book1);
+        libr2.Book(1, book2);
+        libr2.Book(1, book3);   
+        libr2.Book(1, book4);   
+        
+        actual.add(book1);
+        actual.add(book2);
+        actual.add(book3);
+        actual.add(book4);
+        actual = libr2.searchByTitle("Life in cs");
+        
+        assertEquals(expected, actual);
+        //assertEquals(true,libr2.searchByTitle("Life in CS").equals(libr1));
+    }
+
+    @Test
+    public void search_Title1() {//returning a list of books having a that title in their name
+        Book book1= new Book();
+        assertEquals(false,libr.returnBook(book1));
+    }
+    
 }

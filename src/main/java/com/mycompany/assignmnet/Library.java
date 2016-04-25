@@ -44,7 +44,6 @@ public class Library {
     
     public Book getBook(int isbn){
         ArrayList<Book> books = cat.getAllBook();
-        System.out.println(books.size());
         for(Book temp : books){
             if(temp.getIsbn() == isbn){
                 System.out.println(temp.getIsbn());
@@ -52,6 +51,17 @@ public class Library {
             }
         }
         return null;
+    }
+    
+    public ArrayList<Book> searchByTitle(String name){
+        ArrayList<Book> books = cat.getAllBook();
+        cat.searchByTitle(name);
+        ArrayList<Book> titles = cat.searchByTitle(name);
+        //System.out.println(titles.size());
+        
+        //System.out.println("Printing from searchByTitle");
+        cat.printAllBook();
+        return titles;
     }
     
     public boolean newUserInfo(String name, String surname, String address, String email, int id, String nationality, SimpleDateFormat dob){
@@ -122,13 +132,7 @@ public class Library {
     }
     
     public boolean loanTo(Book book, User user, SimpleDateFormat loanDate){
-        System.out.println("Entry Into LoanTo");
-        System.out.println("Book : " + book.getIsbn());
-        System.out.println("User : " + user.getId());  
-        System.out.println(cat.validBook(book));      
-        System.out.println((validUser(user)));      
         if((cat.validBook(book))&&(validUser(user))){
-            System.out.println("Entry in if : " + book.getIsbn());
             book.setLoan(user, loanDate);
             return true;
         }else{

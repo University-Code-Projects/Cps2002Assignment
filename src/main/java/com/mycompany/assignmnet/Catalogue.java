@@ -59,7 +59,7 @@ public class Catalogue {
     
     public void printAllBook(){
         for(Book temp : book){
-            System.out.println("Book Title: "+ temp.getTitle());
+            System.out.print("\nBook Title: "+ temp.getTitle());
             System.out.print("\tAuthor: "+ temp.getAuthor());
             System.out.print("\tISBN: "+ temp.getIsbn());
             System.out.print("\tEdition: "+ temp.getEdition());
@@ -70,5 +70,20 @@ public class Catalogue {
     
     public ArrayList<Book> getAllBook(){
         return book;
+    }
+    
+    public ArrayList<Book> searchByTitle(String name){
+        System.out.println("Entry in searchBy ..... in cat.java");
+        
+        ArrayList<Book> titles = new ArrayList<Book>();
+        name = name.toLowerCase();
+        System.out.println("Name = " + name);
+        for(Book temp : book){
+            if(temp.getTitle().toLowerCase().contains(name)){
+                titles.add(temp);
+            }
+        }
+        System.out.println(titles.size());
+        return titles;
     }
 }
