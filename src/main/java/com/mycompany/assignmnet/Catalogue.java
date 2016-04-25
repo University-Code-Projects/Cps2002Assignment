@@ -57,7 +57,7 @@ public class Catalogue {
         }
     }
     
-    public void getAllBook(){
+    public void printAllBook(){
         for(Book temp : book){
             System.out.println("Book Title: "+ temp.getTitle());
             System.out.print("\tAuthor: "+ temp.getAuthor());
@@ -66,5 +66,9 @@ public class Catalogue {
             System.out.print("\tGenre: "+ temp.getGenre());
             System.out.print("\tYear of Publication: "+ temp.getYrOfPub());
         }
+    }
+    
+    public ArrayList<Book> getAllBook(){
+        return book;
     }
 }

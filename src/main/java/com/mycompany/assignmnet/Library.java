@@ -24,16 +24,17 @@ public class Library {
         cat = new Catalogue();
     }
     
-    public void Book(int choice, Book book){
+    public void Book(int choice, Book book1){
         switch(choice){
             case 1 : 
-                cat.newBookInfo(book.getIsbn(), book.getTitle(), book.getAuthor(), book.getEdition(), book.getGenre(), book.getYrOfPub());
+                cat.newBookInfo(book1.getIsbn(), book1.getTitle(), book1.getAuthor(), book1.getEdition(), book1.getGenre(), book1.getYrOfPub());
                 break;
             case 2 : 
-                cat.removeBook(book);
+                cat.removeBook(book1);
                 break;
             case 3 : 
-                cat.getAllBook();
+                //ArrayList<Book> books = cat.getAllBook();
+                getBook(book1.getIsbn());
                 break;
             default : 
                 System.err.println("Invalid Entry");
@@ -42,7 +43,14 @@ public class Library {
     }
     
     public Book getBook(int isbn){
-        
+        ArrayList<Book> books = cat.getAllBook();
+        System.out.println(books.size());
+        for(Book temp : books){
+            if(temp.getIsbn() == isbn){
+                System.out.println(temp.getIsbn());
+                return temp;
+            }
+        }
         return null;
     }
     
@@ -114,7 +122,13 @@ public class Library {
     }
     
     public boolean loanTo(Book book, User user, SimpleDateFormat loanDate){
+        System.out.println("Entry Into LoanTo");
+        System.out.println("Book : " + book.getIsbn());
+        System.out.println("User : " + user.getId());  
+        System.out.println(cat.validBook(book));      
+        System.out.println((validUser(user)));      
         if((cat.validBook(book))&&(validUser(user))){
+            System.out.println("Entry in if : " + book.getIsbn());
             book.setLoan(user, loanDate);
             return true;
         }else{

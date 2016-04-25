@@ -48,7 +48,6 @@ public class LibraryTest {
     public void Library() {
         libr = new Library();
         user = new User("Test Name", "Test surname",1);
-        
         book = new Book(123, "Life in CS", "Karl Borg", 1, genre, dateFormat);
         libr.addUser(user);
         cat.addBook(book);
@@ -137,9 +136,10 @@ public class LibraryTest {
 
     @Test
     public void loan_To1() {//checking for a valid loan out
-        User user1 = new User("Test Name", "Test surname",1324);
+        User user1 = new User("Test Name", "Test surname",1);
         Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre, dateFormat);
+        
         libr.Book(1, book1);
-        assertEquals(false,libr.loanTo(book1, user1, dateFormat));
+        assertEquals(true,libr.loanTo(libr.getBook(book1.getIsbn()) , user1, dateFormat));
     }
 }
