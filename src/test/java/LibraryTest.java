@@ -142,4 +142,19 @@ public class LibraryTest {
         libr.Book(1, book1);
         assertEquals(true,libr.loanTo(libr.getBook(book1.getIsbn()) , user1, dateFormat));
     }
+    
+    @Test
+    public void retrun_Book() {//returning a book that was loaned out
+        Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre, dateFormat);
+        libr.Book(1, book1);
+        libr.loanTo(book1,user,dateFormat);
+        assertEquals(true,libr.returnBook(book1));
+    }
+
+    @Test
+    public void retrun_Book1() {//returning a book that was loaned out
+        Book book1= new Book();
+        assertEquals(false,libr.returnBook(book1));
+    }
+     
 }
