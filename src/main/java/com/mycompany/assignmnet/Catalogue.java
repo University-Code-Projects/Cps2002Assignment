@@ -11,13 +11,9 @@ import java.util.*;
  * @author jonathan
  */
 public class Catalogue {
-    //private ArrayList<ArrayList<Genre>> listOfGenres = new ArrayList<ArrayList<Genre>>();
-    //private ArrayList<Genre> singleGenre = new ArrayList<Genre>();
     private ArrayList<Book> book ;
 
     public Catalogue(){
-        //listOfGenres = null;
-        //singleGenre = null;
         book = new ArrayList<Book>();
     }
 

@@ -6,25 +6,47 @@
 package com.mycompany.assignmnet;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
  * @author jonathan
  */
 public class Library {
-    private Book book;
-    //private Catalogue cat;
+    private ArrayList<Book> book;
+    private Catalogue cat;
     
     private ArrayList<User> users;
     
     public Library(){
         users = new ArrayList<User>();
-        book = new Book();
-        //cat = new Catalogue();
+        book = new ArrayList<Book>();
+        cat = new Catalogue();
     }
     
-    public boolean newUserInfo(String name, String surname, String address, String email, int id, String nationality, Date dob){
+    public void Book(int choice, Book book){
+        switch(choice){
+            case 1 : 
+                cat.newBookInfo(book.getIsbn(), book.getTitle(), book.getAuthor(), book.getEdition(), book.getGenre(), book.getYrOfPub());
+                break;
+            case 2 : 
+                cat.removeBook(book);
+                break;
+            case 3 : 
+                cat.getAllBook();
+                break;
+            default : 
+                System.err.println("Invalid Entry");
+                break;
+        }
+    }
+    
+    public Book getBook(int isbn){
+        
+        return null;
+    }
+    
+    public boolean newUserInfo(String name, String surname, String address, String email, int id, String nationality, SimpleDateFormat dob){
         User newUser = new User(name, surname, address, email, id, nationality, dob);
         if(validUser(newUser)){
             System.err.println("User already exists");
@@ -91,7 +113,21 @@ public class Library {
         return flag;
     }
     
-    //to implement loanBookTo(Book,User)
-    //to implement returnBook(Book)
+    public boolean loanTo(Book book, User user, SimpleDateFormat loanDate){
+        if((cat.validBook(book))&&(validUser(user))){
+            book.setLoan(user, loanDate);
+            return true;
+        }else{
+            return false;
+        }
+    }
     
+    public boolean returnBook(Book book){
+        if(cat.validBook(book)){
+            book.setLoan(null, null);
+            return true;
+        }else{
+            return false;
+        }
+    }   
 }

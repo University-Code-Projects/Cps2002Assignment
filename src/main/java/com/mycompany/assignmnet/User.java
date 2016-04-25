@@ -5,6 +5,7 @@
  */
 package com.mycompany.assignmnet;
 import java.util.*;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author jonathan
@@ -17,7 +18,7 @@ public class User {
     private String email;
     private int id;
     private String nationality;
-    private Date dob; 
+    private SimpleDateFormat dob; 
     private int libId;
 
     public User(){
@@ -31,7 +32,7 @@ public class User {
         this.address = "Unknown";
     }
 
-    public User(String name, String surname, String address, String email, int id, String nationality, Date dob) {
+    public User(String name, String surname, String address, String email, int id, String nationality, SimpleDateFormat dob) {
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -74,7 +75,7 @@ public class User {
         return nationality;
     }
 
-    public Date getDob() {
+    public SimpleDateFormat getDob() {
         return dob;
     }
 
@@ -102,7 +103,7 @@ public class User {
         this.nationality = nationality;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(SimpleDateFormat dob) {
         this.dob = dob;
     }   
 

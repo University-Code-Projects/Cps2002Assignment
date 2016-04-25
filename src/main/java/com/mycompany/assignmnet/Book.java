@@ -19,7 +19,11 @@ public class Book {
     private int edition;
     private Genre genre;
     private SimpleDateFormat yrOfPub;
-
+    private User loanTo;
+    private SimpleDateFormat loanDate;
+    
+    
+    
     public Book() {
         this.isbn = 0;
         this.title = "";
@@ -68,6 +72,14 @@ public class Book {
     public SimpleDateFormat getYrOfPub() {
         return yrOfPub;
     }
+
+    public User getLoanTo() {
+        return loanTo;
+    }
+
+    public SimpleDateFormat getLoanDate() {
+        return loanDate;
+    }
     
     public void setIsbn(int isbn) {
         this.isbn = isbn;
@@ -92,5 +104,12 @@ public class Book {
     public void setYrOfPub(SimpleDateFormat yrOfPub) {
         this.yrOfPub = yrOfPub;
     }
+
+    public void setLoan(User loanTo, SimpleDateFormat loanDate) {
+        this.loanTo = loanTo;
+        this.loanDate = loanDate;
+    }
+
+    
 }
 

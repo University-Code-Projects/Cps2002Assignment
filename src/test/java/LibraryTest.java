@@ -128,4 +128,18 @@ public class LibraryTest {
     public void valid_Book1() {//checking for a valid book
         assertEquals(true,cat.validBook(book));
     }
+    
+    @Test
+    public void loan_To() {//checking for invalid loan out
+        Book book1= new Book();
+        assertEquals(false,libr.loanTo(book1, user, dateFormat));
+    }
+
+    @Test
+    public void loan_To1() {//checking for a valid loan out
+        User user1 = new User("Test Name", "Test surname",1324);
+        Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre, dateFormat);
+        libr.Book(1, book1);
+        assertEquals(false,libr.loanTo(book1, user1, dateFormat));
+    }
 }
