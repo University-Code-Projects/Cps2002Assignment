@@ -12,5 +12,6 @@ package com.mycompany.assignmnet;
 public class Genre {
     private enum genre{
         Fiction, Nonfiction, Biography, Drama,Myth,Novel,Comedy,Satire,Tragedy,Horror,Informative
-    };    
+    };
+    
 }

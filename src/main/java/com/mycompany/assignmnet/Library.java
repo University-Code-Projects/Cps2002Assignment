@@ -14,14 +14,14 @@ import java.util.Date;
  */
 public class Library {
     private Book book;
-    private Catalogue cat;
+    //private Catalogue cat;
     
     private ArrayList<User> users;
     
     public Library(){
         users = new ArrayList<User>();
         book = new Book();
-        cat = new Catalogue();
+        //cat = new Catalogue();
     }
     
     public boolean newUserInfo(String name, String surname, String address, String email, int id, String nationality, Date dob){

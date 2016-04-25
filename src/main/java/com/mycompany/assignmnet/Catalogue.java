@@ -11,13 +11,13 @@ import java.util.*;
  * @author jonathan
  */
 public class Catalogue {
-    private ArrayList<ArrayList<Genre>> listOfGenres = new ArrayList<ArrayList<Genre>>();
-    private ArrayList<Genre> singleGenre = new ArrayList<Genre>();
+    //private ArrayList<ArrayList<Genre>> listOfGenres = new ArrayList<ArrayList<Genre>>();
+    //private ArrayList<Genre> singleGenre = new ArrayList<Genre>();
     private ArrayList<Book> book ;
 
     public Catalogue(){
-        listOfGenres = null;
-        singleGenre = null;
+        //listOfGenres = null;
+        //singleGenre = null;
         book = new ArrayList<Book>();
     }
 
@@ -51,8 +51,14 @@ public class Catalogue {
         book.add(newBook);
     }
     
-    public boolean removeUser(User deleteUser){
-        return false;
+    public boolean removeBook(Book deleteBook){
+        if(validBook(deleteBook)){
+            book.remove(deleteBook);
+            return true;
+        }else{
+            System.err.println("Error : Book does not exist");
+            return false;
+        }
     }
     
     public void getAllBook(){

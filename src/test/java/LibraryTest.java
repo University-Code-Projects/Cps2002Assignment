@@ -38,21 +38,26 @@ public class LibraryTest {
     // The methods must be annotated with annotation @Test. For example:
     Library libr = new Library();
     User user = new User("Test Name", "Test surname",1);
-    Catalogue cat = new Catalogue();    
+    Catalogue cat = new Catalogue();
+    Book book = new Book();
+    Genre genre = new Genre();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("28-FE-2015");
+        
     
     @Before
     public void Library() {
         libr = new Library();
         user = new User("Test Name", "Test surname",1);
-        Genre genre = new Genre();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("28-FE-2015");
-        Book book = new Book(123456, "Life in CS", "Karl Borg", 1, genre, dateFormat);
+        
+        book = new Book(123, "Life in CS", "Karl Borg", 1, genre, dateFormat);
         libr.addUser(user);
+        cat.addBook(book);
     }
     
     @After
     public void Libray1() {
         libr = null;
+        cat = null;
     }
     
     @Test
@@ -89,12 +94,16 @@ public class LibraryTest {
         User user1 = new User("Test Name", "Test surname",1);
         assertEquals(true,libr.validUser(user1));
     }
-    /*
+    
+@Test
+    public void add_Book() {//adding a new user with different id
+        assertEquals(true,cat.newBookInfo(1, "Life in CS", "Karl Borg", 1, genre, dateFormat));
+    }
+
     @Test
-    public void add_book() {//checking for a valid book
-        Genre genre = new Genre();
-        SimpleDateFormat dateFormat1 = new SimpleDateFormat("28-FE-2015");
-        Book book1 = new Book(123456, "Life in CS", "Karl Borg", 1, genre, dateFormat1);  
-        assertEquals(true,book.validBook(book1));
-    }*/
+    public void add_Book_1() {//user already exists since id already exists
+        Book book1 = new Book(123, "Life in CS", "Karl Borg", 1, genre, dateFormat);
+        assertEquals(false,cat.newBookInfo(123, "Life in CS", "Karl Borg", 1, genre, dateFormat));
+    }
+    
 }
