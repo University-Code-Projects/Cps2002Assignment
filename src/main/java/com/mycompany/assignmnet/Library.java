@@ -33,7 +33,6 @@ public class Library {
                 cat.removeBook(book1);
                 break;
             case 3 : 
-                //ArrayList<Book> books = cat.getAllBook();
                 getBook(book1.getIsbn());
                 break;
             default : 
@@ -46,7 +45,6 @@ public class Library {
         ArrayList<Book> books = cat.getAllBook();
         for(Book temp : books){
             if(temp.getIsbn() == isbn){
-                System.out.println(temp.getIsbn());
                 return temp;
             }
         }
@@ -57,10 +55,6 @@ public class Library {
         ArrayList<Book> books = cat.getAllBook();
         cat.searchByTitle(name);
         ArrayList<Book> titles = cat.searchByTitle(name);
-        //System.out.println(titles.size());
-        
-        //System.out.println("Printing from searchByTitle");
-        cat.printAllBook();
         return titles;
     }
     
