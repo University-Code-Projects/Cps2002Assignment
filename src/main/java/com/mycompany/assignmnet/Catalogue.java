@@ -72,17 +72,13 @@ public class Catalogue {
     }
     
     public ArrayList<Book> searchByTitle(String name){
-        System.out.println("Entry in searchBy ..... in cat.java");
-        
         ArrayList<Book> titles = new ArrayList<Book>();
         name = name.toLowerCase();
-        System.out.println("Name = " + name);
         for(Book temp : book){
             if(temp.getTitle().toLowerCase().contains(name)){
                 titles.add(temp);
             }
         }
-        System.out.println(titles.size());
         return titles;
     }
 }

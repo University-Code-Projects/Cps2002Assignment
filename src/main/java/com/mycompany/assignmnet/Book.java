@@ -77,7 +77,7 @@ public class Book {
         return loanTo;
     }
 
-    public SimpleDateFormat getLoanSimpleDateFormat() {
+    public SimpleDateFormat getLoanDate() {
         return loanDate;
     }
     

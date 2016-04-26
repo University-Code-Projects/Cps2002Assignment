@@ -5,8 +5,8 @@
 */
 package com.mycompany.assignmnet;
 
-import java.util.ArrayList;
-import java.text.SimpleDateFormat;
+import java.util.*;
+import java.text.*;
 
 /**
  *
@@ -126,11 +126,25 @@ public class Library {
     }
     
     public boolean loanTo(Book book, User user, SimpleDateFormat loanDate){
+        Date date = new Date();
         if((cat.validBook(book))&&(validUser(user))){
+            System.out.println("User and Book are both valid, checking if the user given has more than 1 book stores in the loanBook");
             if(user.getLoanBook().size() > 0){
                 ArrayList<Book> books = user.getLoanBook();
-                for(Book temp : books){
+                SimpleDateFormat SimpleDateFormat = new SimpleDateFormat("DD-MM-YYYY");
                 
+                for(Book temp : books){
+                    
+                    //Date loanOut = dateformat.parse("17/07/2015");
+                    
+                    SimpleDateFormat loan = temp.getLoanDate();
+                    SimpleDateFormat current = new SimpleDateFormat();
+                    String start = loan.format(date);
+                    String end = current.format(date);
+                    System.out.println("Difference : " + start +"  end  "+ end);
+                    
+                    
+                    //if()
                     System.out.print("\nBook Title: "+ temp.getTitle());
                     System.out.print("\tAuthor: "+ temp.getAuthor());
                     System.out.print("\tISBN: "+ temp.getIsbn());
@@ -138,11 +152,14 @@ public class Library {
                     System.out.print("\tGenre: "+ temp.getGenre());
                     System.out.print("\tYear of Publication: "+ temp.getYrOfPub());
                 
+                    
                 }
                 
             }else{
                book.setLoan(user, loanDate);                
                user.setLoanBook(book);
+               System.out.println("loaned books = " + user.getLoanBook().size());
+            
             }
 
             return true;

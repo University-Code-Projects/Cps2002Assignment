@@ -44,11 +44,9 @@ public class LibraryTest {
     Catalogue cat = new Catalogue();
     Book book = new Book();
     Genre genre = new Genre();
-    SimpleDateFormat SimpleDateFormat = new SimpleDateFormat("28-FE-2012");
+    SimpleDateFormat SimpleDateFormat = new SimpleDateFormat("28-02-2012");
     int year = 2015;
    
-        
-    
     @Before
     public void Library() {
         libr = new Library();
@@ -146,6 +144,28 @@ public class LibraryTest {
         
         libr.Book(1, book1);
         assertEquals(true,libr.loanTo(libr.getBook(book1.getIsbn()) , user1, SimpleDateFormat));
+    }
+   
+    @Test
+    public void loan_To2() {//checking for a valid loan out
+        System.out.println("loan_To2 entry");
+            
+        User user1 = new User("Test Name", "Test surname",96541);
+        Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book2 = new Book(1232559, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book3 = new Book(17412568, "Life in CS", "Karl Borg", 1, genre, year);
+        
+        libr.Book(1, book1);
+        libr.Book(1, book2);
+        libr.Book(1, book3);
+
+        System.out.println("loaning book2");
+        libr.loanTo(book2, user, SimpleDateFormat);
+        System.out.println("loaning book3");
+        libr.loanTo(book3, user, SimpleDateFormat);
+        System.out.println("return book3");
+        libr.loanTo(book, user, SimpleDateFormat);
+        assertEquals(true,libr.loanTo(libr.getBook(book1.getIsbn()) , user, SimpleDateFormat));
     }
     
     @Test
