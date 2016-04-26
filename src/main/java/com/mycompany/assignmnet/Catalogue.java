@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.mycompany.assignmnet;
-import java.text.SimpleDateFormat;
 import java.util.*;
 /**
  *
@@ -19,7 +18,7 @@ public class Catalogue {
 
     //private int size;
 
-    public boolean newBookInfo(int isbn, String title, String author, int edition, Genre genre, SimpleDateFormat yrOfPub){
+    public boolean newBookInfo(int isbn, String title, String author, int edition, Genre genre, int yrOfPub){
         Book newBook = new Book(isbn, title, author, edition, genre, yrOfPub);
         if(validBook(newBook)){
             System.err.println("Book already exists");
@@ -72,14 +71,18 @@ public class Catalogue {
         return book;
     }
     
-    public ArrayList<Book> searchByTitle(String name){      
+    public ArrayList<Book> searchByTitle(String name){
+        System.out.println("Entry in searchBy ..... in cat.java");
+        
         ArrayList<Book> titles = new ArrayList<Book>();
         name = name.toLowerCase();
+        System.out.println("Name = " + name);
         for(Book temp : book){
             if(temp.getTitle().toLowerCase().contains(name)){
                 titles.add(temp);
             }
         }
+        System.out.println(titles.size());
         return titles;
     }
 }

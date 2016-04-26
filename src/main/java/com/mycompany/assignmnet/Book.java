@@ -18,7 +18,7 @@ public class Book {
     private String author;
     private int edition;
     private Genre genre;
-    private SimpleDateFormat yrOfPub;
+    private int yrOfPub;
     private User loanTo;
     private SimpleDateFormat loanDate;
     
@@ -30,7 +30,7 @@ public class Book {
         this.author = "";
         this.edition = 0;
         this.genre = null;
-        this.yrOfPub = new SimpleDateFormat();
+        this.yrOfPub = 0;
     }
     
     public Book(int isbn, String title, String author, Genre genre) {
@@ -40,7 +40,7 @@ public class Book {
         this.genre = genre;
     }
       //delete a constructor 
-    public Book(int isbn, String title, String author, int edition, Genre genre, SimpleDateFormat yrOfPub) {
+    public Book(int isbn, String title, String author, int edition, Genre genre, int yrOfPub) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
@@ -69,7 +69,7 @@ public class Book {
         return genre;
     }
 
-    public SimpleDateFormat getYrOfPub() {
+    public int getYrOfPub() {
         return yrOfPub;
     }
 
@@ -77,7 +77,7 @@ public class Book {
         return loanTo;
     }
 
-    public SimpleDateFormat getLoanDate() {
+    public SimpleDateFormat getLoanSimpleDateFormat() {
         return loanDate;
     }
     
@@ -101,7 +101,7 @@ public class Book {
         this.genre = genre;
     }
 
-    public void setYrOfPub(SimpleDateFormat yrOfPub) {
+    public void setYrOfPub(int yrOfPub) {
         this.yrOfPub = yrOfPub;
     }
 

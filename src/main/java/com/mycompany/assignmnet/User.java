@@ -20,6 +20,7 @@ public class User {
     private String nationality;
     private SimpleDateFormat dob; 
     private int libId;
+    private ArrayList<Book> loanBook;
 
     public User(){
     }
@@ -30,6 +31,7 @@ public class User {
         this.id = id;
         this.address = "Unknown";
         this.address = "Unknown";
+        this.loanBook = new ArrayList<Book>();
     }
 
     public User(String name, String surname, String address, String email, int id, String nationality, SimpleDateFormat dob) {
@@ -40,6 +42,7 @@ public class User {
         this.id = id;
         this.nationality = nationality;
         this.dob = dob;
+        this.loanBook = new ArrayList<Book>();
     }
     
     
@@ -79,6 +82,10 @@ public class User {
         return dob;
     }
 
+    public ArrayList<Book> getLoanBook() {
+        return loanBook;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -109,5 +116,9 @@ public class User {
 
     public void setLibId(int libId) {
         this.libId = libId;
+    }
+
+    public void setLoanBook(Book loanBook1) {
+        this.loanBook.add(loanBook1);
     }
 }

@@ -127,7 +127,24 @@ public class Library {
     
     public boolean loanTo(Book book, User user, SimpleDateFormat loanDate){
         if((cat.validBook(book))&&(validUser(user))){
-            book.setLoan(user, loanDate);
+            if(user.getLoanBook().size() > 0){
+                ArrayList<Book> books = user.getLoanBook();
+                for(Book temp : books){
+                
+                    System.out.print("\nBook Title: "+ temp.getTitle());
+                    System.out.print("\tAuthor: "+ temp.getAuthor());
+                    System.out.print("\tISBN: "+ temp.getIsbn());
+                    System.out.print("\tEdition: "+ temp.getEdition());
+                    System.out.print("\tGenre: "+ temp.getGenre());
+                    System.out.print("\tYear of Publication: "+ temp.getYrOfPub());
+                
+                }
+                
+            }else{
+               book.setLoan(user, loanDate);                
+               user.setLoanBook(book);
+            }
+
             return true;
         }else{
             return false;
