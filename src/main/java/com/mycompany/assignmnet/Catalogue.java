@@ -16,8 +16,6 @@ public class Catalogue {
         book = new ArrayList<Book>();
     }
 
-    //private int size;
-
     public boolean newBookInfo(int isbn, String title, String author, int edition, Genre genre, int yrOfPub){
         Book newBook = new Book(isbn, title, author, edition, genre, yrOfPub);
         if(validBook(newBook)){

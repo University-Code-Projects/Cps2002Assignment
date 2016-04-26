@@ -58,28 +58,12 @@ public class User {
         return surname;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
     public int getId() {
         return id;
     }
 
     public int getLibId() {
         return libId;
-    }
-    
-    public String getNationality() {
-        return nationality;
-    }
-
-    public SimpleDateFormat getDob() {
-        return dob;
     }
 
     public ArrayList<Book> getLoanBook() {
