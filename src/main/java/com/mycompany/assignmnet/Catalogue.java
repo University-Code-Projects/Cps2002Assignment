@@ -79,4 +79,14 @@ public class Catalogue {
         }
         return titles;
     }
+
+    public ArrayList<Book> searchByYearOfPublication(int year){
+        ArrayList<Book> books = new ArrayList<Book>();
+        for(Book temp : book){
+            if(temp.getYrOfPub() == year){
+                books.add(temp);
+            }
+        }
+        return books;
+    }
 }

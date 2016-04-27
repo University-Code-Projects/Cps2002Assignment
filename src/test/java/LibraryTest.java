@@ -47,6 +47,7 @@ public class LibraryTest {
     Genre genre = new Genre();
     SimpleDateFormat SimpleDateFormat = new SimpleDateFormat("02/28/2012 12:00:00");
     int year = 2015;
+    int year2 = 1996;
    
     @Before
     public void Library() {
@@ -302,6 +303,70 @@ public class LibraryTest {
             }
         }
         assertEquals(true, flag);
+    }
+    
+    @Test
+    public void search_Year() {//returning a list of books having a the same Publish Year
+        ArrayList<Book> expected = new ArrayList<Book>();
+        ArrayList<Book> actual = new ArrayList<Book>();
+        
+        Library libr2 = new Library();
+        
+        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre, year);
+        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre, year);
+        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre, year);
+        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre, year);
+
+        expected.add(book1);
+        expected.add(book2);
+        expected.add(book3);
+        expected.add(book4);
+        
+        libr2.Book(1, book1);
+        libr2.Book(1, book2);
+        libr2.Book(1, book3);   
+        libr2.Book(1, book4);   
+
+        actual = libr2.searchByYearOfPublication(year);
+        boolean flag = true;
+        for(int i=0; i < expected.size(); i++){
+            if(expected.get(i).getYrOfPub() != year){
+                flag = false;
+            }
+        }
+        assertEquals(true, flag);
+    }
+    
+    @Test
+    public void search_Year1() {//returning a list of books having a the same Publish Year
+        ArrayList<Book> expected = new ArrayList<Book>();
+        ArrayList<Book> actual = new ArrayList<Book>();
+        
+        Library libr2 = new Library();
+        
+        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre, year);
+        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre, year);
+        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre, 2000);
+        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre, 1996);
+
+        expected.add(book1);
+        expected.add(book2);
+        expected.add(book3);
+        expected.add(book4);
+        
+        libr2.Book(1, book1);
+        libr2.Book(1, book2);
+        libr2.Book(1, book3);   
+        libr2.Book(1, book4);   
+
+        actual = libr2.searchByYearOfPublication(year);
+        boolean flag = true;
+        for(int i=0; i < expected.size(); i++){
+            if(expected.get(i).getYrOfPub() != year){
+                flag = false;
+            }
+        }
+        assertEquals(false, flag);
     }
     
 }

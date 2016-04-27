@@ -57,6 +57,13 @@ public class Library {
         ArrayList<Book> titles = cat.searchByTitle(name);
         return titles;
     }
+
+    public ArrayList<Book> searchByYearOfPublication(int year){
+        ArrayList<Book> books = cat.getAllBook();
+        cat.searchByYearOfPublication(year);
+        ArrayList<Book> titles = cat.searchByYearOfPublication(year);
+        return titles;
+    }
     
     public boolean newUserInfo(String name, String surname, String address, String email, int id, String nationality, SimpleDateFormat dob){
         User newUser = new User(name, surname, address, email, id, nationality, dob);
