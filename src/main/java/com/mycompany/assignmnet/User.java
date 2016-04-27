@@ -31,7 +31,7 @@ public class User {
         this.id = id;
         this.address = "Unknown";
         this.address = "Unknown";
-        this.loanBook = new ArrayList<Book>();
+        loanBook = new ArrayList<Book>();
     }
 
     public User(String name, String surname, String address, String email, int id, String nationality, SimpleDateFormat dob) {
@@ -42,7 +42,7 @@ public class User {
         this.id = id;
         this.nationality = nationality;
         this.dob = dob;
-        this.loanBook = new ArrayList<Book>();
+        loanBook = new ArrayList<Book>();
     }
     
     
@@ -103,6 +103,6 @@ public class User {
     }
 
     public void setLoanBook(Book loanBook1) {
-        this.loanBook.add(loanBook1);
+        loanBook.add(loanBook1);
     }
 }

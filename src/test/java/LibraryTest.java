@@ -41,6 +41,7 @@ public class LibraryTest {
     // The methods must be annotated with annotation @Test. For example:
     Library libr = new Library();
     User user = new User("Test Name", "Test surname",1);
+    User user2 = new User("Test Name", "Test surname",8956);
     Catalogue cat = new Catalogue();
     Book book = new Book();
     Genre genre = new Genre();
@@ -51,6 +52,8 @@ public class LibraryTest {
     public void Library() {
         libr = new Library();
         user = new User("Test Name", "Test surname",1);
+        user2 = new User("Test Name", "Test surname",8956);
+        
         book = new Book(123, "Life in CS", "Karl Borg", 1, genre, year);
         libr.addUser(user);
         cat.addBook(book);
@@ -60,8 +63,9 @@ public class LibraryTest {
     public void Libray1() {
         libr = null;
         cat = null;
+        user = null;
+        user2 = null;
     }
-    
     @Test
     public void add_User() {//adding a new user with different id
         assertEquals(true,libr.newUserInfo("Test Name", "Test surname",2));
@@ -148,9 +152,6 @@ public class LibraryTest {
    
     @Test
     public void loan_To2() {//checking for a valid loan out
-        System.out.println("loan_To2 entry");
-            
-        User user1 = new User("Test Name", "Test surname",96541);
         Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre, year);
         Book book2 = new Book(1232559, "Life in CS", "Karl Borg", 1, genre, year);
         Book book3 = new Book(17412568, "Life in CS", "Karl Borg", 1, genre, year);
@@ -159,15 +160,72 @@ public class LibraryTest {
         libr.Book(1, book2);
         libr.Book(1, book3);
 
-        System.out.println("loaning book2");
         libr.loanTo(book2, user, SimpleDateFormat);
-        System.out.println("loaning book3");
         libr.loanTo(book3, user, SimpleDateFormat);
-        System.out.println("return book3");
         libr.loanTo(book, user, SimpleDateFormat);
         assertEquals(false,libr.loanTo(libr.getBook(book1.getIsbn()) , user, SimpleDateFormat));
     }
-    
+/*
+    @Test
+    public void loan_To3() {//checking for a valid loan out, user having more than 3 books
+        System.out.println("Loan3 "+user.getLoanBook().size());
+        
+        Book book1 = new Book(8844, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book2 = new Book(12968, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book3 = new Book(174128, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book4 = new Book(89, "Life in CS", "Karl Borg", 1, genre, year);
+        
+        libr.Book(1, book1);
+        libr.Book(1, book2);
+        libr.Book(1, book3);
+
+        SimpleDateFormat SimpleDateFormat1 = new SimpleDateFormat("04/22/2016 12:00:00");
+        
+        libr.loanTo(book2, user, SimpleDateFormat1);
+        libr.loanTo(book3, user, SimpleDateFormat1);
+        libr.loanTo(book4, user, SimpleDateFormat1);
+        
+        System.out.println("User has before assertEquals :  "+user.getLoanBook().size());
+        
+        assertEquals(false,libr.loanTo(book1, user, SimpleDateFormat1));
+    }
+
+    @Test
+    public void loan_To4() {//checking for a valid loan out, user having less than 3 books
+        System.out.println("Loan4 "+user.getLoanBook().size());
+                    
+        Book book1 = new Book(84, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book2 = new Book(2, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book3 = new Book(18, "Life in CS", "Karl Borg", 1, genre, year);
+        
+        libr.Book(1, book1);
+        libr.Book(1, book2);
+        libr.Book(1, book3);
+
+        SimpleDateFormat SimpleDateFormat1 = new SimpleDateFormat("04/22/2016 12:00:00");
+        libr.loanTo(book2, user2, SimpleDateFormat1);
+        libr.loanTo(book1, user2, SimpleDateFormat1);
+        
+        assertEquals(true,libr.loanTo(book3 , user2, SimpleDateFormat1));
+    }
+*/
+    @Test
+    public void loan_To5() {//checking for a valid loan out, user having less than 3 books and more than 28
+        
+        Book book1 = new Book(84, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book2 = new Book(12968, "Life in CS", "Karl Borg", 1, genre, year);
+        
+        libr.Book(1, book1);
+        libr.Book(1, book2);
+
+        SimpleDateFormat SimpleDateFormat1 = new SimpleDateFormat("04/22/2016 12:00:00");
+        
+        libr.loanTo(book2, user2, SimpleDateFormat);
+        libr.loanTo(book, user2, SimpleDateFormat1);
+
+        assertEquals(false,libr.loanTo(libr.getBook(book1.getIsbn()) , user2, SimpleDateFormat1));
+    }    
+
     @Test
     public void retrun_Book() {//returning a book that was loaned out
         Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre, year);

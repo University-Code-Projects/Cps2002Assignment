@@ -155,11 +155,17 @@ public class Library {
                 }          
             }
             
-            if(flag){
-               book.setLoan(user, loanDate);                
-               user.setLoanBook(book);
-               System.out.println("loaned books = " + user.getLoanBook().size());     
-               return true;
+            if(flag){                    
+                if(user.getLoanBook().size() > 3){
+                    System.out.println("User has : "+user.getLoanBook().size());
+                    return false;
+                }else{                    
+                    System.out.println("Accept User has : "+user.getLoanBook().size());
+                    book.setLoan(user, loanDate);
+                    user.setLoanBook(book);
+                    System.out.println("loaned books = " + user.getLoanBook().size());
+                    return true;
+                }
             }
             return false;
         }else{
