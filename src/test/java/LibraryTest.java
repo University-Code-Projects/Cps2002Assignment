@@ -165,7 +165,7 @@ public class LibraryTest {
         libr.loanTo(book, user, SimpleDateFormat);
         assertEquals(false,libr.loanTo(libr.getBook(book1.getIsbn()) , user, SimpleDateFormat));
     }
-/*
+    
     @Test
     public void loan_To3() {//checking for a valid loan out, user having more than 3 books
         System.out.println("Loan3 "+user.getLoanBook().size());
@@ -178,6 +178,7 @@ public class LibraryTest {
         libr.Book(1, book1);
         libr.Book(1, book2);
         libr.Book(1, book3);
+        libr.Book(1, book4);
 
         SimpleDateFormat SimpleDateFormat1 = new SimpleDateFormat("04/22/2016 12:00:00");
         
@@ -203,12 +204,12 @@ public class LibraryTest {
         libr.Book(1, book3);
 
         SimpleDateFormat SimpleDateFormat1 = new SimpleDateFormat("04/22/2016 12:00:00");
-        libr.loanTo(book2, user2, SimpleDateFormat1);
-        libr.loanTo(book1, user2, SimpleDateFormat1);
+        libr.loanTo(book2, user, SimpleDateFormat1);
+        libr.loanTo(book1, user, SimpleDateFormat1);
         
-        assertEquals(true,libr.loanTo(book3 , user2, SimpleDateFormat1));
+        assertEquals(true,libr.loanTo(book3 , user, SimpleDateFormat1));
     }
-*/
+    
     @Test
     public void loan_To5() {//checking for a valid loan out, user having less than 3 books and more than 28
         

@@ -155,8 +155,8 @@ public class Library {
                 }          
             }
             
-            if(flag){                    
-                if(user.getLoanBook().size() > 3){
+        if(flag){                    
+                if(user.getLoanBook().size() == 3){
                     System.out.println("User has : "+user.getLoanBook().size());
                     return false;
                 }else{                    
@@ -167,7 +167,7 @@ public class Library {
                     return true;
                 }
             }
-            return false;
+        return false;
         }else{
             return false;
         }
