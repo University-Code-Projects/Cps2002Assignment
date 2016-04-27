@@ -65,17 +65,6 @@ public class Library {
         return titles;
     }
     
-    public boolean newUserInfo(String name, String surname, String address, String email, int id, String nationality, SimpleDateFormat dob){
-        User newUser = new User(name, surname, address, email, id, nationality, dob);
-        if(validUser(newUser)){
-            System.err.println("User already exists");
-            return false;
-        }else{
-            addUser(newUser);
-            return true;
-        }
-    }
-    
     public boolean newUserInfo(String name, String surname, int id){
         User newUser = new User(name, surname, id);
         if(validUser(newUser)){
@@ -86,7 +75,7 @@ public class Library {
             return true;
         }
     }
-    
+
     public void addUser(User newUser){
         User user = new User();
         if(!users.isEmpty()){

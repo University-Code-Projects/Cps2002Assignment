@@ -108,8 +108,6 @@ public class Book {
     public void setLoan(User loanTo, SimpleDateFormat loanDate) {
         this.loanTo = loanTo;
         this.loanDate = loanDate;
-    }
-
-    
+    }  
 }
 
