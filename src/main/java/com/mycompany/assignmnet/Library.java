@@ -121,6 +121,10 @@ public class Library {
         return flag;
     }
     
+    public ArrayList<Book> getAllBook(){
+        return cat.getAllBook();
+    }
+    
     public boolean loanTo(Book book, User user, SimpleDateFormat loanDate){
         Date date = new Date();
         if((cat.validBook(book))&&(validUser(user))){

@@ -40,6 +40,7 @@ public class LibraryTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     Library libr = new Library();
+    Library libr2 = new Library();
     User user = new User("Test Name", "Test surname",1);
     User user2 = new User("Test Name", "Test surname",8956);
     Catalogue cat = new Catalogue();
@@ -52,10 +53,11 @@ public class LibraryTest {
     @Before
     public void Library() {
         libr = new Library();
+        libr2 = new Library();
         user = new User("Test Name", "Test surname",1);
         user2 = new User("Test Name", "Test surname",8956);
         
-        book = new Book(123, "Life in CS", "Karl Borg", 1, genre, year);
+        book = new Book(123, "Life in CS", "Karl Borg", 1, genre.Horror, year);
         libr.addUser(user);
         cat.addBook(book);
     }
@@ -63,6 +65,7 @@ public class LibraryTest {
     @After
     public void Libray1() {
         libr = null;
+        libr2 = null;
         cat = null;
         user = null;
         user2 = null;
@@ -104,13 +107,13 @@ public class LibraryTest {
     
     @Test
     public void add_Book() {//adding a new book with different isbn
-        assertEquals(true,cat.newBookInfo(1, "Life in CS", "Karl Borg", 1, genre, year));
+        assertEquals(true,cat.newBookInfo(1, "Life in CS", "Karl Borg", 1, genre.Horror, year));
     }
 
     @Test
     public void add_Book_1() {//user already exists since isbn already exists
         Book book1 = new Book(123, "Life in CS", "Karl Borg", 1, genre, year);
-        assertEquals(false,cat.newBookInfo(123, "Life in CS", "Karl Borg", 1, genre, year));
+        assertEquals(false,cat.newBookInfo(123, "Life in CS", "Karl Borg", 1, genre.Horror, year));
     }
     
     @Test
@@ -145,7 +148,7 @@ public class LibraryTest {
     @Test
     public void loan_To1() {//checking for a valid loan out
         User user1 = new User("Test Name", "Test surname",1);
-        Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre.Horror, year);
         
         libr.Book(1, book1);
         assertEquals(true,libr.loanTo(libr.getBook(book1.getIsbn()) , user1, SimpleDateFormat));
@@ -153,9 +156,9 @@ public class LibraryTest {
    
     @Test
     public void loan_To2() {//checking for a valid loan out
-        Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre, year);
-        Book book2 = new Book(1232559, "Life in CS", "Karl Borg", 1, genre, year);
-        Book book3 = new Book(17412568, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre.Horror, year);
+        Book book2 = new Book(1232559, "Life in CS", "Karl Borg", 1, genre.Horror, year);
+        Book book3 = new Book(17412568, "Life in CS", "Karl Borg", 1, genre.Horror, year);
         
         libr.Book(1, book1);
         libr.Book(1, book2);
@@ -169,12 +172,10 @@ public class LibraryTest {
     
     @Test
     public void loan_To3() {//checking for a valid loan out, user having more than 3 books
-        System.out.println("Loan3 "+user.getLoanBook().size());
-        
-        Book book1 = new Book(8844, "Life in CS", "Karl Borg", 1, genre, year);
-        Book book2 = new Book(12968, "Life in CS", "Karl Borg", 1, genre, year);
-        Book book3 = new Book(174128, "Life in CS", "Karl Borg", 1, genre, year);
-        Book book4 = new Book(89, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book1 = new Book(8844, "Life in CS", "Karl Borg", 1, genre.Horror, year);
+        Book book2 = new Book(12968, "Life in CS", "Karl Borg", 1, genre.Horror, year);
+        Book book3 = new Book(174128, "Life in CS", "Karl Borg", 1, genre.Horror, year);
+        Book book4 = new Book(89, "Life in CS", "Karl Borg", 1, genre.Horror, year);
         
         libr.Book(1, book1);
         libr.Book(1, book2);
@@ -194,11 +195,9 @@ public class LibraryTest {
 
     @Test
     public void loan_To4() {//checking for a valid loan out, user having less than 3 books
-        System.out.println("Loan4 "+user.getLoanBook().size());
-                    
-        Book book1 = new Book(84, "Life in CS", "Karl Borg", 1, genre, year);
-        Book book2 = new Book(2, "Life in CS", "Karl Borg", 1, genre, year);
-        Book book3 = new Book(18, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book1 = new Book(84, "Life in CS", "Karl Borg", 1, genre.Horror, year);
+        Book book2 = new Book(2, "Life in CS", "Karl Borg", 1, genre.Horror, year);
+        Book book3 = new Book(18, "Life in CS", "Karl Borg", 1, genre.Horror, year);
         
         libr.Book(1, book1);
         libr.Book(1, book2);
@@ -213,9 +212,8 @@ public class LibraryTest {
     
     @Test
     public void loan_To5() {//checking for a valid loan out, user having less than 3 books and more than 28
-        
-        Book book1 = new Book(84, "Life in CS", "Karl Borg", 1, genre, year);
-        Book book2 = new Book(12968, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book1 = new Book(84, "Life in CS", "Karl Borg", 1, genre.Horror, year);
+        Book book2 = new Book(12968, "Life in CS", "Karl Borg", 1, genre.Horror, year);
         
         libr.Book(1, book1);
         libr.Book(1, book2);
@@ -230,7 +228,7 @@ public class LibraryTest {
 
     @Test
     public void retrun_Book() {//returning a book that was loaned out
-        Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre.Horror, year);
         libr.Book(1, book1);
         libr.loanTo(book1,user,SimpleDateFormat);
         assertEquals(true,libr.returnBook(book1));
@@ -249,10 +247,10 @@ public class LibraryTest {
         
         Library libr2 = new Library();
         
-        Book book1 = new Book(86551, "Life in CS", "Karl Borg", 1, genre, year);
-        Book book2 = new Book(74866, "Life in CS", "Karl Borg", 1, genre, year);
-        Book book3 = new Book(98568, "Life in CS", "Karl Borg", 1, genre, year);
-        Book book4 = new Book(98578, "Life in AI", "Karl Borg", 1, genre, year);
+        Book book1 = new Book(86551, "Life in CS", "Karl Borg", 1, genre.Horror, year);
+        Book book2 = new Book(74866, "Life in CS", "Karl Borg", 1, genre.Horror, year);
+        Book book3 = new Book(98568, "Life in CS", "Karl Borg", 1, genre.Horror, year);
+        Book book4 = new Book(98578, "Life in AI", "Karl Borg", 1, genre.Horror, year);
 
         expected.add(book1);
         expected.add(book2);
@@ -281,10 +279,10 @@ public class LibraryTest {
         
         Library libr2 = new Library();
         
-        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre, year);
-        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre, year);
-        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre, year);
-        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre, year);
+        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre.Comedy, year);
+        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre.Satire, year);
+        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre.Informative, year);
+        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre.Nonfiction, year);
 
         expected.add(book1);
         expected.add(book2);
@@ -312,10 +310,10 @@ public class LibraryTest {
         
         Library libr2 = new Library();
         
-        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre, year);
-        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre, year);
-        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre, year);
-        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre, year);
+        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre.Comedy, year);
+        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre.Satire, year);
+        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre.Informative, year);
+        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre.Nonfiction, year);
 
         expected.add(book1);
         expected.add(book2);
@@ -344,10 +342,10 @@ public class LibraryTest {
         
         Library libr2 = new Library();
         
-        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre, year);
-        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre, year);
-        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre, 2000);
-        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre, 1996);
+        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre.Comedy, year);
+        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre.Satire, year);
+        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre.Informative, 2000);
+        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre.Nonfiction, 1996);
 
         expected.add(book1);
         expected.add(book2);
@@ -369,4 +367,31 @@ public class LibraryTest {
         assertEquals(false, flag);
     }
     
+    @Test
+    public void get_AllBooks() {//returning a list of all books 
+        ArrayList<Book> all = new ArrayList<Book>();
+        ArrayList<Book> expected = new ArrayList<Book>();
+        
+        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre, year);
+        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre, year);
+        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre, 2000);
+        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre, 1996);
+
+        all.add(book1);
+        all.add(book2);
+        all.add(book3);
+        all.add(book4);
+        
+        libr2.Book(1, book1);
+        libr2.Book(1, book2);
+        libr2.Book(1, book3);   
+        libr2.Book(1, book4);   
+        
+        expected = libr2.getAllBook();
+        boolean flag = false;
+        if(expected.size() == all.size()){
+            flag = true;
+        }
+        assertEquals(true, flag);       
+    }
 }
