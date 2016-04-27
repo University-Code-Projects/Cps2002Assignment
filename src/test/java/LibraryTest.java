@@ -44,7 +44,7 @@ public class LibraryTest {
     Catalogue cat = new Catalogue();
     Book book = new Book();
     Genre genre = new Genre();
-    SimpleDateFormat SimpleDateFormat = new SimpleDateFormat("28-02-2012");
+    SimpleDateFormat SimpleDateFormat = new SimpleDateFormat("02/28/2012 12:00:00");
     int year = 2015;
    
     @Before
@@ -165,7 +165,7 @@ public class LibraryTest {
         libr.loanTo(book3, user, SimpleDateFormat);
         System.out.println("return book3");
         libr.loanTo(book, user, SimpleDateFormat);
-        assertEquals(true,libr.loanTo(libr.getBook(book1.getIsbn()) , user, SimpleDateFormat));
+        assertEquals(false,libr.loanTo(libr.getBook(book1.getIsbn()) , user, SimpleDateFormat));
     }
     
     @Test

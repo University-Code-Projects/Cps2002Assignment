@@ -128,41 +128,40 @@ public class Library {
     public boolean loanTo(Book book, User user, SimpleDateFormat loanDate){
         Date date = new Date();
         if((cat.validBook(book))&&(validUser(user))){
-            System.out.println("User and Book are both valid, checking if the user given has more than 1 book stores in the loanBook");
+            boolean flag = true;
             if(user.getLoanBook().size() > 0){
-                ArrayList<Book> books = user.getLoanBook();
-                SimpleDateFormat SimpleDateFormat = new SimpleDateFormat("DD-MM-YYYY");
-                
-                for(Book temp : books){
-                    
-                    //Date loanOut = dateformat.parse("17/07/2015");
-                    
+                ArrayList<Book> books = user.getLoanBook();                
+                for(Book temp : books){                    
                     SimpleDateFormat loan = temp.getLoanDate();
-                    SimpleDateFormat current = new SimpleDateFormat();
+                    SimpleDateFormat current = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                    SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
                     String start = loan.format(date);
                     String end = current.format(date);
-                    System.out.println("Difference : " + start +"  end  "+ end);
-                    
-                    
-                    //if()
-                    System.out.print("\nBook Title: "+ temp.getTitle());
-                    System.out.print("\tAuthor: "+ temp.getAuthor());
-                    System.out.print("\tISBN: "+ temp.getIsbn());
-                    System.out.print("\tEdition: "+ temp.getEdition());
-                    System.out.print("\tGenre: "+ temp.getGenre());
-                    System.out.print("\tYear of Publication: "+ temp.getYrOfPub());
-                
-                    
-                }
-                
-            }else{
+                    Date entry = null;
+                    Date curr = null;
+                    try {
+                        entry = format.parse(start);
+                        curr = format.parse(end);
+                        double differnce = curr.getTime() - entry.getTime();
+                        double diffinDays = differnce / (24 * 60 * 60 * 1000);
+                        System.out.println("Difference days: " +diffinDays);
+                        if(diffinDays > 28){
+                            flag = false;
+                        }
+                    } catch (Exception e) {
+			e.printStackTrace();
+                    }
+                    System.out.println("Difference : " + start +"  end  "+ end);                    
+                }          
+            }
+            
+            if(flag){
                book.setLoan(user, loanDate);                
                user.setLoanBook(book);
-               System.out.println("loaned books = " + user.getLoanBook().size());
-            
+               System.out.println("loaned books = " + user.getLoanBook().size());     
+               return true;
             }
-
-            return true;
+            return false;
         }else{
             return false;
         }
