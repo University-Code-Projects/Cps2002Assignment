@@ -173,12 +173,27 @@ public class Library {
         }
     }
     
-    public boolean returnBook(Book book){
-        if(cat.validBook(book)){
-            book.setLoan(null, null);
-            return true;
-        }else{
-            return false;
+    public ArrayList<Book> searchByGenre(Genre genre){
+        ArrayList<Book> books = cat.getAllBook();
+        cat.searchByGenre(genre);
+        ArrayList<Book> titles = cat.searchByGenre(genre);
+        return titles;
+    }
+    
+    public boolean returnBook(Book bookL){
+        boolean deleted = false;
+        if(cat.validBook(bookL)){
+            if(bookL.getLoanTo() != null){
+                ArrayList<Book> loanedBooks = bookL.getLoanTo().getLoanBook();
+                for(Book temp : loanedBooks){
+                    if(temp == bookL){
+                        loanedBooks.remove(temp);
+                        bookL.setLoan(null, null);
+                        return true;
+                    }
+                }
+            }
         }
+        return false;
     }   
 }

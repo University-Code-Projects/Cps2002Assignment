@@ -227,20 +227,6 @@ public class LibraryTest {
     }    
 
     @Test
-    public void retrun_Book() {//returning a book that was loaned out
-        Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre.Horror, year);
-        libr.Book(1, book1);
-        libr.loanTo(book1,user,SimpleDateFormat);
-        assertEquals(true,libr.returnBook(book1));
-    }
-
-    @Test
-    public void retrun_Book1() {//returning a book that was loaned out
-        Book book1= new Book();
-        assertEquals(false,libr.returnBook(book1));
-    }
-
-    @Test
     public void search_Title() {//returning a list of books having a that title in their name
         ArrayList<Book> expected = new ArrayList<Book>();
         ArrayList<Book> actual = new ArrayList<Book>();
@@ -271,7 +257,7 @@ public class LibraryTest {
         }     
         assertEquals(true, flag);
     }
-
+    
     @Test
     public void search_Title1() {//returning a list of books having a that title in their name
         ArrayList<Book> expected = new ArrayList<Book>();
@@ -305,30 +291,29 @@ public class LibraryTest {
     
     @Test
     public void search_Year() {//returning a list of books having a the same Publish Year
-        ArrayList<Book> expected = new ArrayList<Book>();
-        ArrayList<Book> actual = new ArrayList<Book>();
+        ArrayList<Book> actual;
         
         Library libr2 = new Library();
         
-        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre.Comedy, year);
-        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre.Satire, year);
-        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre.Informative, year);
-        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre.Nonfiction, year);
-
+        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre.Comedy, 2015);
+        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre.Satire, 2015);
+        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre.Informative, 2016);
+        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre.Nonfiction, 2016);
+/*
         expected.add(book1);
         expected.add(book2);
         expected.add(book3);
         expected.add(book4);
-        
+ */       
         libr2.Book(1, book1);
         libr2.Book(1, book2);
         libr2.Book(1, book3);   
         libr2.Book(1, book4);   
 
-        actual = libr2.searchByYearOfPublication(year);
+        actual = libr2.searchByYearOfPublication(2015);
         boolean flag = true;
-        for(int i=0; i < expected.size(); i++){
-            if(expected.get(i).getYrOfPub() != year){
+        for(int i=0; i < actual.size(); i++){
+            if(actual.get(i).getYrOfPub() != 2015){
                 flag = false;
             }
         }
@@ -337,8 +322,7 @@ public class LibraryTest {
     
     @Test
     public void search_Year1() {//returning a list of books having a the same Publish Year
-        ArrayList<Book> expected = new ArrayList<Book>();
-        ArrayList<Book> actual = new ArrayList<Book>();
+        ArrayList<Book> actual;
         
         Library libr2 = new Library();
         
@@ -346,21 +330,16 @@ public class LibraryTest {
         Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre.Satire, year);
         Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre.Informative, 2000);
         Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre.Nonfiction, 1996);
-
-        expected.add(book1);
-        expected.add(book2);
-        expected.add(book3);
-        expected.add(book4);
-        
+     
         libr2.Book(1, book1);
         libr2.Book(1, book2);
         libr2.Book(1, book3);   
         libr2.Book(1, book4);   
 
-        actual = libr2.searchByYearOfPublication(year);
+        actual = libr2.searchByYearOfPublication(2015);
         boolean flag = true;
-        for(int i=0; i < expected.size(); i++){
-            if(expected.get(i).getYrOfPub() != year){
+        for(int i=0; i < actual.size(); i++){
+            if(actual.get(i).getYrOfPub() != 2020){
                 flag = false;
             }
         }
@@ -370,13 +349,13 @@ public class LibraryTest {
     @Test
     public void get_AllBooks() {//returning a list of all books 
         ArrayList<Book> all = new ArrayList<Book>();
-        ArrayList<Book> expected = new ArrayList<Book>();
+        ArrayList<Book> expected;
         
-        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre, year);
-        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre, year);
-        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre, 2000);
-        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre, 1996);
-
+        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre.Comedy, year);
+        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre.Satire, year);
+        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre.Informative, 2000);
+        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre.Nonfiction, 1996);
+        
         all.add(book1);
         all.add(book2);
         all.add(book3);
@@ -394,4 +373,76 @@ public class LibraryTest {
         }
         assertEquals(true, flag);       
     }
+    
+    @Test
+    public void search_Genre() {//returning a list of books having a the same Genre
+        ArrayList<Book> actual;
+        
+        Library libr2 = new Library();
+        
+        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre.Comedy, year);
+        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre.Comedy, year);
+        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre.Informative, year);
+        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre.Nonfiction, year);
+
+        libr2.Book(1, book1);
+        libr2.Book(1, book2);
+        libr2.Book(1, book3);   
+        libr2.Book(1, book4);   
+
+        actual = libr2.searchByGenre(genre.Comedy);
+        boolean flag = true;
+        for(int i=0; i < actual.size(); i++){
+            if(actual.get(i).getGenre() != genre.Comedy){
+                flag = false;
+            }
+        }
+        assertEquals(true, flag);
+    }
+    /*
+    @Test
+    public void search_Genre1() {//returning a list of books having a the same Genre
+        ArrayList<Book> actual;
+        
+        Library libr2 = new Library();
+        
+        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre.Comedy, year);
+        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre.Satire, year);
+        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre.Informative, 2000);
+        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre.Nonfiction, 1996);
+        
+        libr2.Book(1, book1);
+        libr2.Book(1, book2);
+        libr2.Book(1, book3);   
+        libr2.Book(1, book4);   
+
+        actual = libr2.searchByGenre(genre.Comedy);
+        boolean flag = true;
+        for(int i=0; i < actual.size(); i++){
+            System.out.println(actual.size());
+            System.out.println(genre.Comedy.toString());
+            System.out.println(actual.get(i).getGenre().toString());
+            if(actual.get(i).getGenre() != genre.Biography){
+                flag = false;
+            }
+        }
+        assertEquals(false, flag);
+    }
+    */
+    
+    @Test
+    public void retrun_Book() {//returning a book that was loaned out
+        Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre.Horror, year);
+        libr.Book(1, book1);
+        libr.loanTo(book1,user,SimpleDateFormat);
+        assertEquals(true,libr.returnBook(book1));
+    }
+
+    @Test
+    public void retrun_Book1() {//returning a book that was not loaned out
+        Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre.Horror, year);
+        libr.Book(1, book1);
+        assertEquals(false,libr.returnBook(book1));
+    }
+
 }

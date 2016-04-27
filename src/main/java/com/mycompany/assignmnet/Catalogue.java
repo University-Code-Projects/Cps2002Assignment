@@ -80,6 +80,16 @@ public class Catalogue {
         return titles;
     }
 
+    public ArrayList<Book> searchByGenre(Genre genre){
+        ArrayList<Book> books = new ArrayList<Book>();
+        for(Book temp : book){
+            if(temp.getGenre() == genre){
+                books.add(temp);
+            }
+        }
+        return books;
+    }
+    
     public ArrayList<Book> searchByYearOfPublication(int year){
         ArrayList<Book> books = new ArrayList<Book>();
         for(Book temp : book){
