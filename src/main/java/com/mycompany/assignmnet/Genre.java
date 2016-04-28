@@ -10,5 +10,17 @@ package com.mycompany.assignmnet;
  * @author jonathan
  */
 public class Genre {
-    public Genre Fiction, Nonfiction, Biography, Drama,Myth,Novel,Comedy,Satire,Tragedy,Horror,Informative, Other;
+    String name;
+    
+    public Genre () { 
+
+    } 
+    
+    public Genre (String gen) { 
+        this.name = gen; 
+    } 
+    
+    public String getGenre() { 
+        return name;
+    }
 }

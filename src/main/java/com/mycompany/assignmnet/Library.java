@@ -144,26 +144,21 @@ public class Library {
                         curr = format.parse(end);
                         double differnce = curr.getTime() - entry.getTime();
                         double diffinDays = differnce / (24 * 60 * 60 * 1000);
-                        System.out.println("Difference days: " +diffinDays);
                         if(diffinDays > 28){
                             flag = false;
                         }
                     } catch (Exception e) {
 			e.printStackTrace();
                     }
-                    System.out.println("Difference : " + start +"  end  "+ end);                    
                 }          
             }
             
         if(flag){                    
                 if(user.getLoanBook().size() == 3){
-                    System.out.println("User has : "+user.getLoanBook().size());
                     return false;
                 }else{                    
-                    System.out.println("Accept User has : "+user.getLoanBook().size());
                     book.setLoan(user, loanDate);
                     user.setLoanBook(book);
-                    System.out.println("loaned books = " + user.getLoanBook().size());
                     return true;
                 }
             }

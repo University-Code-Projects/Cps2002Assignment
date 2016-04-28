@@ -60,7 +60,7 @@ public class Catalogue {
             System.out.print("\tAuthor: "+ temp.getAuthor());
             System.out.print("\tISBN: "+ temp.getIsbn());
             System.out.print("\tEdition: "+ temp.getEdition());
-            System.out.print("\tGenre: "+ temp.getGenre());
+            System.out.print("\tGenre: "+ temp.getGenre().getGenre());
             System.out.print("\tYear of Publication: "+ temp.getYrOfPub());
         }
     }
