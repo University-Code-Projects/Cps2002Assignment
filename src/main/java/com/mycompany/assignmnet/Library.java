@@ -26,16 +26,16 @@ public class Library {
     
     public void Book(int choice, Book book1){
         switch(choice){
-            case 1 : 
+            case 1 :
                 cat.newBookInfo(book1.getIsbn(), book1.getTitle(), book1.getAuthor(), book1.getEdition(), book1.getGenre(), book1.getYrOfPub());
                 break;
-            case 2 : 
+            case 2 :
                 cat.removeBook(book1);
                 break;
-            case 3 : 
+            case 3 :
                 getBook(book1.getIsbn());
                 break;
-            default : 
+            default :
                 System.err.println("Invalid Entry");
                 break;
         }
@@ -57,7 +57,7 @@ public class Library {
         ArrayList<Book> titles = cat.searchByTitle(name);
         return titles;
     }
-
+    
     public ArrayList<Book> searchByYearOfPublication(int year){
         ArrayList<Book> books = cat.getAllBook();
         cat.searchByYearOfPublication(year);
@@ -75,7 +75,7 @@ public class Library {
             return true;
         }
     }
-
+    
     public void addUser(User newUser){
         User user = new User();
         if(!users.isEmpty()){
@@ -130,8 +130,8 @@ public class Library {
         if((cat.validBook(book))&&(validUser(user))){
             boolean flag = true;
             if(user.getLoanBook().size() > 0){
-                ArrayList<Book> books = user.getLoanBook();                
-                for(Book temp : books){                    
+                ArrayList<Book> books = user.getLoanBook();
+                for(Book temp : books){
                     SimpleDateFormat loan = temp.getLoanDate();
                     SimpleDateFormat current = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
                     SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
@@ -148,21 +148,21 @@ public class Library {
                             flag = false;
                         }
                     } catch (Exception e) {
-			e.printStackTrace();
+                        e.printStackTrace();
                     }
-                }          
+                }
             }
             
-        if(flag){                    
+            if(flag && book.getLoanTo() == null){
                 if(user.getLoanBook().size() == 3){
                     return false;
-                }else{                    
+                }else{
                     book.setLoan(user, loanDate);
                     user.setLoanBook(book);
                     return true;
                 }
             }
-        return false;
+            return false;
         }else{
             return false;
         }
@@ -190,5 +190,5 @@ public class Library {
             }
         }
         return false;
-    }   
+    }
 }

@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package com.mycompany.assignmnet;
 
 import java.text.SimpleDateFormat;
@@ -12,7 +12,7 @@ import java.util.*;
  * @author jonathan
  */
 public class Book {
-       
+    
     private int isbn;
     private String title;
     private String author;
@@ -39,7 +39,7 @@ public class Book {
         this.author = author;
         this.genre = genre;
     }
-      //delete a constructor 
+    //delete a constructor
     public Book(int isbn, String title, String author, int edition, Genre genre, int yrOfPub) {
         this.isbn = isbn;
         this.title = title;
@@ -56,27 +56,27 @@ public class Book {
     public String getTitle() {
         return title;
     }
-
+    
     public String getAuthor() {
         return author;
     }
-
+    
     public int getEdition() {
         return edition;
     }
-
+    
     public Genre getGenre() {
         return genre;
     }
-
+    
     public int getYrOfPub() {
         return yrOfPub;
     }
-
+    
     public User getLoanTo() {
         return loanTo;
     }
-
+    
     public SimpleDateFormat getLoanDate() {
         return loanDate;
     }
@@ -92,22 +92,22 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
-
+    
     public void setEdition(int edition) {
         this.edition = edition;
     }
-
+    
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
-
+    
     public void setYrOfPub(int yrOfPub) {
         this.yrOfPub = yrOfPub;
     }
-
+    
     public void setLoan(User loanTo, SimpleDateFormat loanDate) {
         this.loanTo = loanTo;
         this.loanDate = loanDate;
-    }  
+    }
 }
 

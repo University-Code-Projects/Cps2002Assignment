@@ -1,8 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+*/
 package com.mycompany.assignmnet;
 import java.util.*;
 /**
@@ -11,11 +11,11 @@ import java.util.*;
  */
 public class Catalogue {
     private ArrayList<Book> book ;
-
+    
     public Catalogue(){
         book = new ArrayList<Book>();
     }
-
+    
     public boolean newBookInfo(int isbn, String title, String author, int edition, Genre genre, int yrOfPub){
         Book newBook = new Book(isbn, title, author, edition, genre, yrOfPub);
         if(validBook(newBook)){
@@ -38,7 +38,7 @@ public class Catalogue {
         }
         return flag;
     }
-
+    
     
     public void addBook(Book newBook){
         book.add(newBook);
@@ -79,7 +79,7 @@ public class Catalogue {
         }
         return titles;
     }
-
+    
     public ArrayList<Book> searchByGenre(Genre genre){
         ArrayList<Book> books = new ArrayList<Book>();
         for(Book temp : book){

@@ -49,7 +49,7 @@ public class LibraryTest {
     SimpleDateFormat SimpleDateFormat = new SimpleDateFormat("02/28/2012 12:00:00");
     int year = 2015;
     int year2 = 1996;
-   
+    
     @Before
     public void Library() {
         libr = new Library();
@@ -74,7 +74,7 @@ public class LibraryTest {
     public void add_User() {//adding a new user with different id
         assertEquals(true,libr.newUserInfo("Test Name", "Test surname",2));
     }
-
+    
     @Test
     public void add_User_1() {//user already exists since id already exists
         User user1 = new User("Test Name", "Test surname",1);
@@ -86,19 +86,19 @@ public class LibraryTest {
         User user1 = new User("Test Name", "Test surname",1);
         assertEquals(true,libr.removeUser(user1));
     }
-   
+    
     @Test
     public void delete_User1() {//delete a user that has been deleted already
         libr.removeUser(user);
         assertEquals(false,libr.removeUser(user));
     }
-
+    
     @Test
     public void valid_User() {//checking for an invlaid user (since id was not set)
         User user1= new User();
         assertEquals(false,libr.validUser(user1));
     }
-
+    
     @Test
     public void valid_User1() {//checking for a valid user
         User user1 = new User("Test Name", "Test surname",1);
@@ -109,7 +109,7 @@ public class LibraryTest {
     public void add_Book() {//adding a new book with different isbn
         assertEquals(true,cat.newBookInfo(1, "Life in CS", "Karl Borg", 1, genre, year));
     }
-
+    
     @Test
     public void add_Book_1() {//user already exists since isbn already exists
         Book book1 = new Book(123, "Life in CS", "Karl Borg", 1, genre, year);
@@ -121,19 +121,19 @@ public class LibraryTest {
         User user1 = new User("Test Name", "Test surname",1);
         assertEquals(true,libr.removeUser(user1));
     }
-   
+    
     @Test
     public void delete_Book1() {//delete a book that has been deleted already
         cat.removeBook(book);
         assertEquals(false,cat.removeBook(book));
     }
-
+    
     @Test
     public void valid_Book() {//checking for an invlaid book (since isbn was not set)
         Book book1= new Book();
         assertEquals(false,cat.validBook(book1));
     }
-
+    
     @Test
     public void valid_Book1() {//checking for a valid book
         assertEquals(true,cat.validBook(book));
@@ -144,7 +144,7 @@ public class LibraryTest {
         Book book1= new Book();
         assertEquals(false,libr.loanTo(book1, user, SimpleDateFormat));
     }
-
+    
     @Test
     public void loan_To1() {//checking for a valid loan out
         User user1 = new User("Test Name", "Test surname",1);
@@ -153,7 +153,7 @@ public class LibraryTest {
         libr.Book(1, book1);
         assertEquals(true,libr.loanTo(libr.getBook(book1.getIsbn()) , user1, SimpleDateFormat));
     }
-   
+    
     @Test
     public void loan_To2() {//checking for a valid loan out
         Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre, year);
@@ -163,7 +163,7 @@ public class LibraryTest {
         libr.Book(1, book1);
         libr.Book(1, book2);
         libr.Book(1, book3);
-
+        
         libr.loanTo(book2, user, SimpleDateFormat);
         libr.loanTo(book3, user, SimpleDateFormat);
         libr.loanTo(book, user, SimpleDateFormat);
@@ -181,16 +181,16 @@ public class LibraryTest {
         libr.Book(1, book2);
         libr.Book(1, book3);
         libr.Book(1, book4);
-
+        
         SimpleDateFormat SimpleDateFormat1 = new SimpleDateFormat("04/22/2016 12:00:00");
         
         libr.loanTo(book2, user, SimpleDateFormat1);
         libr.loanTo(book3, user, SimpleDateFormat1);
         libr.loanTo(book4, user, SimpleDateFormat1);
-                
+        
         assertEquals(false,libr.loanTo(book1, user, SimpleDateFormat1));
     }
-
+    
     @Test
     public void loan_To4() {//checking for a valid loan out, user having less than 3 books
         Book book1 = new Book(84, "Life in CS", "Karl Borg", 1, genre, year);
@@ -200,7 +200,7 @@ public class LibraryTest {
         libr.Book(1, book1);
         libr.Book(1, book2);
         libr.Book(1, book3);
-
+        
         SimpleDateFormat SimpleDateFormat1 = new SimpleDateFormat("04/22/2016 12:00:00");
         libr.loanTo(book2, user, SimpleDateFormat1);
         libr.loanTo(book1, user, SimpleDateFormat1);
@@ -215,15 +215,31 @@ public class LibraryTest {
         
         libr.Book(1, book1);
         libr.Book(1, book2);
-
+        
         SimpleDateFormat SimpleDateFormat1 = new SimpleDateFormat("04/22/2016 12:00:00");
         
         libr.loanTo(book2, user2, SimpleDateFormat);
         libr.loanTo(book, user2, SimpleDateFormat1);
-
+        
         assertEquals(false,libr.loanTo(libr.getBook(book1.getIsbn()) , user2, SimpleDateFormat1));
-    }    
-
+    }
+    
+    @Test
+    public void loan_To6() {//checking for a valid loan out, when the book is already loaned out
+        Book book1 = new Book(84, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book2 = new Book(12968, "Life in CS", "Karl Borg", 1, genre, year);
+        
+        libr.Book(1, book1);
+        libr.Book(1, book2);
+        
+        SimpleDateFormat SimpleDateFormat1 = new SimpleDateFormat("04/22/2016 12:00:00");
+        
+        libr.loanTo(book2, user2, SimpleDateFormat);
+        libr.loanTo(book, user2, SimpleDateFormat1);
+        
+        assertEquals(false,libr.loanTo(book , user2, SimpleDateFormat1));
+    }
+    
     @Test
     public void search_Title() {//returning a list of books having a that title in their name
         ArrayList<Book> actual;
@@ -234,12 +250,12 @@ public class LibraryTest {
         Book book2 = new Book(74866, "Life in CS", "Karl Borg", 1, genre, year);
         Book book3 = new Book(98568, "Life in CS", "Karl Borg", 1, genre, year);
         Book book4 = new Book(98578, "Life in AI", "Karl Borg", 1, genre, year);
-
+        
         libr2.Book(1, book1);
         libr2.Book(1, book2);
-        libr2.Book(1, book3);   
-        libr2.Book(1, book4);   
-
+        libr2.Book(1, book3);
+        libr2.Book(1, book4);
+        
         actual = libr2.searchByTitle("Life in cs");
         
         boolean flag = true;
@@ -247,7 +263,7 @@ public class LibraryTest {
             if(!actual.get(i).getTitle().toLowerCase().contains("life in cs")){
                 flag = false;
             }
-        }     
+        }
         assertEquals(true, flag);
     }
     
@@ -264,9 +280,9 @@ public class LibraryTest {
         
         libr2.Book(1, book1);
         libr2.Book(1, book2);
-        libr2.Book(1, book3);   
-        libr2.Book(1, book4);   
-
+        libr2.Book(1, book3);
+        libr2.Book(1, book4);
+        
         actual = libr2.searchByTitle("Life in cs");
         boolean flag = true;
         for(int i=0; i < actual.size(); i++){
@@ -287,12 +303,12 @@ public class LibraryTest {
         Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre, 2015);
         Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre, 2016);
         Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre, 2016);
- 
+        
         libr2.Book(1, book1);
         libr2.Book(1, book2);
-        libr2.Book(1, book3);   
-        libr2.Book(1, book4);   
-
+        libr2.Book(1, book3);
+        libr2.Book(1, book4);
+        
         actual = libr2.searchByYearOfPublication(2015);
         boolean flag = true;
         for(int i=0; i < actual.size(); i++){
@@ -313,12 +329,12 @@ public class LibraryTest {
         Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre, year);
         Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre, 2000);
         Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre, 1996);
-     
+        
         libr2.Book(1, book1);
         libr2.Book(1, book2);
-        libr2.Book(1, book3);   
-        libr2.Book(1, book4);   
-
+        libr2.Book(1, book3);
+        libr2.Book(1, book4);
+        
         actual = libr2.searchByYearOfPublication(2015);
         boolean flag = true;
         for(int i=0; i < actual.size(); i++){
@@ -330,7 +346,7 @@ public class LibraryTest {
     }
     
     @Test
-    public void get_AllBooks() {//returning a list of all books 
+    public void get_AllBooks() {//returning a list of all books
         ArrayList<Book> all = new ArrayList<Book>();
         ArrayList<Book> expected;
         
@@ -346,15 +362,15 @@ public class LibraryTest {
         
         libr2.Book(1, book1);
         libr2.Book(1, book2);
-        libr2.Book(1, book3);   
-        libr2.Book(1, book4);   
+        libr2.Book(1, book3);
+        libr2.Book(1, book4);
         
         expected = libr2.getAllBook();
         boolean flag = false;
         if(expected.size() == all.size()){
             flag = true;
         }
-        assertEquals(true, flag);       
+        assertEquals(true, flag);
     }
     
     @Test
@@ -365,16 +381,16 @@ public class LibraryTest {
         Genre genre1 = new Genre("Comedy");
         Genre genre2 = new Genre("Satire");
         Genre genre3 = new Genre("Biography");
-
+        
         Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre1, year);
         Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre1, year);
         Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre2, year);
         Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre3, year);
-
+        
         libr2.Book(1, book1);
         libr2.Book(1, book2);
-        libr2.Book(1, book3);   
-        libr2.Book(1, book4);   
+        libr2.Book(1, book3);
+        libr2.Book(1, book4);
         actual = libr2.searchByGenre(genre1);
         boolean flag = true;
         for(int i=0; i < actual.size(); i++){
@@ -401,9 +417,9 @@ public class LibraryTest {
         
         libr2.Book(1, book1);
         libr2.Book(1, book2);
-        libr2.Book(1, book3);   
-        libr2.Book(1, book4);   
-
+        libr2.Book(1, book3);
+        libr2.Book(1, book4);
+        
         actual = libr2.searchByGenre(genre1);
         boolean flag = true;
         for(int i=0; i < actual.size(); i++){
@@ -421,12 +437,12 @@ public class LibraryTest {
         libr.loanTo(book1,user,SimpleDateFormat);
         assertEquals(true,libr.returnBook(book1));
     }
-
+    
     @Test
     public void retrun_Book1() {//returning a book that was not loaned out
         Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre, year);
         libr.Book(1, book1);
         assertEquals(false,libr.returnBook(book1));
     }
-
+    
 }
