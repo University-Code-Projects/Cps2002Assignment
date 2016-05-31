@@ -51,6 +51,15 @@ public class Library {
         return null;
     }
     
+    /*
+    Instantiation of the class, to remove the 2 methods below, once implemented (due to test cases)
+    */
+    public ArrayList<Book> searchForBooks(ArrayList<Book> filter){
+        ArrayList<Book> found = filter;
+        return found;
+    }
+    
+    
     public ArrayList<Book> searchByTitle(String name){
         ArrayList<Book> books = cat.getAllBook();
         cat.searchByTitle(name);
