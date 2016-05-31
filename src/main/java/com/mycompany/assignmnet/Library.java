@@ -53,13 +53,23 @@ public class Library {
     
     /*
     Instantiation of the class, to remove the 2 methods below, once implemented (due to test cases)
+    to use the factory method.
     */
-    public ArrayList<Book> searchForBooks(ArrayList<Book> filter){
-        ArrayList<Book> found = filter;
-        return found;
+    //to be nade generic instead of string
+    public interface searchForBooks{
+        public ArrayList<Book> search(String name);
     }
     
-    
+    public class searchTitle implements searchForBooks{
+        
+        public ArrayList<Book> search(String name){
+            ArrayList<Book> books = cat.getAllBook();
+            cat.searchByTitle(name);
+            ArrayList<Book> titles = cat.searchByTitle(name);
+            return titles;
+        }
+    }
+   
     public ArrayList<Book> searchByTitle(String name){
         ArrayList<Book> books = cat.getAllBook();
         cat.searchByTitle(name);
