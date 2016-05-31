@@ -205,7 +205,7 @@ public class LibraryTest {
         libr.loanTo(book2, user, SimpleDateFormat1);
         libr.loanTo(book1, user, SimpleDateFormat1);
         
-        assertEquals(true,libr.loanTo(book3 , user, SimpleDateFormat1));
+        assertEquals(false,libr.loanTo(book3 , user, SimpleDateFormat1));
     }
     
     @Test
