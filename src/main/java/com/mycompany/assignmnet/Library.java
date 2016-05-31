@@ -56,11 +56,12 @@ public class Library {
     to use the factory method.
     */
     //to be nade generic instead of string
+   
     public interface searchForBooks<T>{
-        public ArrayList<Book> search(T t);
+        ArrayList<Book> search(T t);
     }
     
-    public abstract class searchTitle implements searchForBooks{
+    public class searchTitle implements searchForBooks<String>{
         public ArrayList<Book> search(String name){
             ArrayList<Book> books = cat.getAllBook();
             cat.searchByTitle(name);
@@ -69,8 +70,8 @@ public class Library {
         }
     }
    
-    public abstract class searchYear implements searchForBooks{
-        public ArrayList<Book> search(int year){
+    public class searchYear implements searchForBooks<Integer>{
+        public ArrayList<Book> search(Integer year){
             ArrayList<Book> books = cat.getAllBook();
             cat.searchByYearOfPublication(year);
             ArrayList<Book> titles = cat.searchByYearOfPublication(year);
@@ -78,7 +79,7 @@ public class Library {
         }
     }
    
-    public abstract class searchGenre implements searchForBooks{
+    public class searchGenre implements searchForBooks<Genre>{
         public ArrayList<Book> search(Genre genre){
             return searchByGenre(genre);
         }
