@@ -16,8 +16,6 @@ public class Library {
     private ArrayList<Book> book;
     private Catalogue cat;
     private ArrayList<User> users;
-    private ArrayList<ArrayList<User>> observer;
-    
     
     public Library(){
         users = new ArrayList<User>();
@@ -177,16 +175,22 @@ public class Library {
             }
             
             if(flag && book.getLoanTo() == null){
-                if(user.getLoanBook().size() == 3){
-                    return false;
-                }else{
+                if(user.getLoanBook().size() < 3){
                     book.setLoan(user, loanDate);
                     user.setLoanBook(book);
-                    return true;
+                    System.out.println("Entered123");
+                    return true;               
                 }
             }
+            
+            if((book.getLoanTo() != null)){
+                System.out.println("Entered");
+                ArrayList<User> waitingUsers = book.getWantingBook();
+                waitingUsers.add(user);
+                book.setWantingBook(waitingUsers);
+            }
             return false;
-        }else{
+         }else{
             return false;
         }
     }
@@ -199,7 +203,18 @@ public class Library {
                 for(Book temp : loanedBooks){
                     if(temp == bookL){
                         loanedBooks.remove(temp);
-                        bookL.setLoan(null, null);
+                        temp.setLoan(null, null);
+                        
+                        ArrayList<User> waitingUsers = temp.getWantingBook();                       
+                        
+                        if(!waitingUsers.isEmpty()){
+                        
+                            waitingUsers.remove(0);
+                        
+                            System.out.println("User :" + waitingUsers.get(0)+ " now has the book " + temp.getTitle());
+                        
+                        }
+                        bookL.setWantingBook(waitingUsers);
                         return true;
                     }
                 }

@@ -563,4 +563,37 @@ public class LibraryTest {
         assertEquals(false,libr.returnBook(book1));
     }
     
+    @Test
+    public void observer_Test() {
+        Book book10 = new Book(99999, "Life in CS", "Karl Borg", 1, genre, year);
+        
+        libr.loanTo(book10, user, SimpleDateFormat);
+        libr.loanTo(book10, user2, SimpleDateFormat);
+        ArrayList<User> waitingNoUsers = book.getWantingBook();
+        
+        boolean flag = false;
+        if(waitingNoUsers.size() == 1){
+            flag = true;
+        }
+        assertEquals(true,flag);
+    }
+    
+    @Test
+    public void observer_Test_1(){
+        Book book1 = new Book(99999, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book2 = new Book(88888, "Life in CS", "Karl Borg", 1, genre, year);
+        
+        libr.loanTo(book1, user, SimpleDateFormat);
+        libr.loanTo(book1, user2, SimpleDateFormat);
+        
+        libr.returnBook(book1);
+        ArrayList<User> waitingNoUsers = book.getWantingBook();
+        
+        
+        boolean flag = false;
+        if(waitingNoUsers.size() == 0){
+            flag = true;
+        }
+        assertEquals(true,flag);
+    }
 }

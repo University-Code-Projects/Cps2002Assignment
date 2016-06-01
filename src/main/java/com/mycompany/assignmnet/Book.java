@@ -21,6 +21,7 @@ public class Book {
     private int yrOfPub;
     private User loanTo;
     private SimpleDateFormat loanDate;
+    private ArrayList<User> wantingBook;
     
     
     
@@ -31,6 +32,8 @@ public class Book {
         this.edition = 0;
         this.genre = null;
         this.yrOfPub = 0;
+        this.loanTo = null;
+        this.wantingBook = new ArrayList<User>();
     }
     
     /*
@@ -50,13 +53,15 @@ public class Book {
         this.edition = edition;
         this.genre = genre;
         this.yrOfPub = yrOfPub;
+        this.loanTo = null;
+        this.wantingBook = new ArrayList<User>();
     }
     
     public int getIsbn() {
         return isbn;
     }
-    
-    public String getTitle() {
+
+  public String getTitle() {
         return title;
     }
     
@@ -82,6 +87,10 @@ public class Book {
     
     public SimpleDateFormat getLoanDate() {
         return loanDate;
+    }
+    
+    public ArrayList<User> getWantingBook() {
+        return wantingBook;
     }
     
     public void setIsbn(int isbn) {
@@ -111,6 +120,10 @@ public class Book {
     public void setLoan(User loanTo, SimpleDateFormat loanDate) {
         this.loanTo = loanTo;
         this.loanDate = loanDate;
+    }
+
+    public void setWantingBook(ArrayList<User> wantingBook) {
+        this.wantingBook = wantingBook;
     }
 }
 
