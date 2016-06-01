@@ -253,12 +253,14 @@ public class Library {
         }
     }
     
+    /*
     public ArrayList<Book> searchByGenre(Genre genre){
         ArrayList<Book> books = cat.getAllBook();
         cat.searchByGenre(genre);
         ArrayList<Book> titles = cat.searchByGenre(genre);
         return titles;
     }
+*/
     
     public boolean returnBook(Book bookL){
         boolean deleted = false;
