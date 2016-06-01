@@ -242,7 +242,7 @@ public class LibraryTest {
     
     @Test
     public void search_Title() {//returning a list of books having a that title in their name
-        ArrayList<Book> actual;
+        ArrayList<Book> actual = new ArrayList<Book>();
         
         Library libr2 = new Library();
         
@@ -256,7 +256,9 @@ public class LibraryTest {
         libr2.Book(1, book3);
         libr2.Book(1, book4);
         
-        actual = libr2.searchByTitle("Life in cs");
+        
+        actual = libr2.searchForBooks(libr2.getAllBook(), actual, "Life in cs", year, genre);
+        //actual = libr2.searchByTitle("Life in cs");
         
         boolean flag = true;
         for(int i=0; i < actual.size(); i++){
@@ -269,7 +271,7 @@ public class LibraryTest {
     
     @Test
     public void search_Title1() {//returning a list of books having a that title in their name
-        ArrayList<Book> actual;
+        ArrayList<Book> actual = new ArrayList<Book>();
         
         Library libr2 = new Library();
         
@@ -283,14 +285,16 @@ public class LibraryTest {
         libr2.Book(1, book3);
         libr2.Book(1, book4);
         
-        actual = libr2.searchByTitle("Life in cs");
+        actual = libr2.searchForBooks(libr2.getAllBook(), actual, "Life in cs", year, genre);
+        //actual = libr2.searchByTitle("Life in cs");
+        
         boolean flag = true;
         for(int i=0; i < actual.size(); i++){
             if(!actual.get(i).getTitle().toLowerCase().contains("life in ai")){
                 flag = false;
             }
         }
-        assertEquals(true, flag);
+        assertEquals(true, flag);//due to the ! on the if statement
     }
     
     @Test

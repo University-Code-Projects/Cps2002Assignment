@@ -23,7 +23,7 @@ public class Library {
         book = new ArrayList<Book>();
         cat = new Catalogue();
     }
-    
+       
     public void Book(int choice, Book book1){
         switch(choice){
             case 1 :
@@ -51,7 +51,53 @@ public class Library {
         return null;
     }
     
+    /*
+        Composite design pattern
+    */
+    public ArrayList<Book> searchForBooks(ArrayList<Book> allBooks, ArrayList<Book> searchResult, String title, int year, Genre genre){
+        if(!title.isEmpty()){
+            searchResult = new ArrayList<Book>();
+            title = title.toLowerCase();
+            for(Book temp : allBooks){
+                if(temp.getTitle().toLowerCase().contains(title)){
+                    searchResult.add(temp);
+                }
+            }
+            title = "";
+        }else if(year > 0){
+            searchResult = new ArrayList<Book>();
+            for(Book temp : allBooks){
+                if(temp.getYrOfPub() == year){
+                    searchResult.add(temp);
+                }
+            }
+            year = 0;
+        }else if(genre != null){
+            searchResult = new ArrayList<Book>();
+            for(Book temp : allBooks){
+                if(temp.getGenre() == genre){
+                    searchResult.add(temp);
+                }
+            }
+            genre = null;
+        }else{
+            return searchResult;
+        }
+        //allBooks = searchResult;
+        return searchForBooks(searchResult,searchResult,title,year,genre);
+    }
     
+    /*
+    public ArrayList<Book> search(int year, Genre genre, String title){
+        ArrayList<Book> searchResult = cat.getAllBook();
+        for(Book temp : searchResult){
+            if(temp.getGenre() == genre){
+                books.add(temp);
+            }
+        }
+        return searchResult;
+    }  
+    */
     
     /*
     Instantiation of the class, to remove the 2 methods below, once implemented (due to test cases)
