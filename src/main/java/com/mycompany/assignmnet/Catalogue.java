@@ -69,6 +69,7 @@ public class Catalogue {
         return book;
     }
     
+    /*
     public ArrayList<Book> searchByTitle(String name){
         ArrayList<Book> titles = new ArrayList<Book>();
         name = name.toLowerCase();
@@ -99,4 +100,5 @@ public class Catalogue {
         }
         return books;
     }
+*/
 }
