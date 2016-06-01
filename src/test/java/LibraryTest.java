@@ -498,8 +498,8 @@ public class LibraryTest {
         }else{
             for(int i=0; i < actual.size(); i++){
                 if(actual.get(i).getGenre() == genre1){
-                    if(actual.get(i).getGenre() == genre1){
-                        if(actual.get(i).getGenre() == genre1){
+                    if(actual.get(i).getYrOfPub() == year){
+                        if(actual.get(i).getTitle() == "Fun"){
                             flag = true;
                         }
                     }
@@ -509,6 +509,45 @@ public class LibraryTest {
         assertEquals(true, flag);
     }
     
+    @Test
+    public void search_Books_1() {
+        ArrayList<Book> actual = new ArrayList<Book>();
+        
+        Library libr2 = new Library();
+        Genre genre1 = new Genre("Comedy");
+        Genre genre2 = new Genre("Satire");
+        Genre genre3 = new Genre("Biography");
+        
+        Book book1 = new Book(86551, "Life as seen by SD", "Karl Borg", 1, genre1, year);
+        Book book2 = new Book(74866, "Fun", "Karl Borg", 1, genre1, year);
+        Book book3 = new Book(98568, "SunFlowers", "Karl Borg", 1, genre2, 2000);
+        Book book4 = new Book(98578, "Rainbows", "Karl Borg", 1, genre3, 1996);
+        
+        libr2.Book(1, book1);
+        libr2.Book(1, book2);
+        libr2.Book(1, book3);
+        libr2.Book(1, book4);
+        
+        actual = libr2.searchForBooks(libr2.getAllBook(), actual, "Fun", year, genre1);
+        //actual = libr2.searchByGenre(genre1);
+        
+        boolean flag = false;
+        if(actual.size() == 0){
+            flag = false;
+        }else{
+            for(int i=0; i < actual.size(); i++){
+                if(actual.get(i).getGenre() == genre){
+                    if(actual.get(i).getYrOfPub() == 1999){
+                        if(actual.get(i).getTitle() == "Testing For Failures"){
+                            flag = true;
+                        }
+                    }
+                }          
+            }
+        }
+        assertEquals(false, flag);
+    }
+
     @Test
     public void retrun_Book() {//returning a book that was loaned out
         Book book1 = new Book(6854, "Life in CS", "Karl Borg", 1, genre, year);
