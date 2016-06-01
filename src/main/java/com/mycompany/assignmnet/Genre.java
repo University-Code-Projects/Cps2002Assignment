@@ -11,11 +11,11 @@ package com.mycompany.assignmnet;
  */
 public class Genre {
     String name;
-    
+    /*
     public Genre () {
         
     }
-    
+    */
     public Genre (String gen) {
         this.name = gen;
     }

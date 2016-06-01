@@ -15,8 +15,9 @@ import java.text.*;
 public class Library {
     private ArrayList<Book> book;
     private Catalogue cat;
-    
     private ArrayList<User> users;
+    private ArrayList<ArrayList<User>> observer;
+    
     
     public Library(){
         users = new ArrayList<User>();
@@ -87,69 +88,6 @@ public class Library {
         return searchForBooks(searchResult,searchResult,title,year,genre);
     }
     
-    /*
-    public ArrayList<Book> search(int year, Genre genre, String title){
-        ArrayList<Book> searchResult = cat.getAllBook();
-        for(Book temp : searchResult){
-            if(temp.getGenre() == genre){
-                books.add(temp);
-            }
-        }
-        return searchResult;
-    }  
-    */
-    
-    /*
-    Instantiation of the class, to remove the 2 methods below, once implemented (due to test cases)
-    to use the factory method.
-    */
-    //to be made generic instead of string
-   /*
-    public interface searchForBooks<T>{
-        ArrayList<Book> search(T t);
-    }
-    
-    public class searchTitle implements searchForBooks<String>{
-        public ArrayList<Book> search(String name){
-            ArrayList<Book> books = cat.getAllBook();
-            cat.searchByTitle(name);
-            ArrayList<Book> titles = cat.searchByTitle(name);
-            return titles;
-        }
-    }
-   
-    public class searchYear implements searchForBooks<Integer>{
-        public ArrayList<Book> search(Integer year){
-            ArrayList<Book> books = cat.getAllBook();
-            cat.searchByYearOfPublication(year);
-            ArrayList<Book> titles = cat.searchByYearOfPublication(year);
-            return titles;
-        }
-    }
-   
-    public class searchGenre implements searchForBooks<Genre>{
-        public ArrayList<Book> search(Genre genre){
-            return searchByGenre(genre);
-        }
-    }
-    
-    */
-    /*
-    public ArrayList<Book> searchByTitle(String name){
-        ArrayList<Book> books = cat.getAllBook();
-        cat.searchByTitle(name);
-        ArrayList<Book> titles = cat.searchByTitle(name);
-        return titles;
-    }
-    
-    
-    public ArrayList<Book> searchByYearOfPublication(int year){
-        ArrayList<Book> books = cat.getAllBook();
-        cat.searchByYearOfPublication(year);
-        ArrayList<Book> titles = cat.searchByYearOfPublication(year);
-        return titles;
-    }
-    */
     public boolean newUserInfo(String name, String surname, int id){
         User newUser = new User(name, surname, id);
         if(validUser(newUser)){
@@ -253,15 +191,6 @@ public class Library {
         }
     }
     
-    /*
-    public ArrayList<Book> searchByGenre(Genre genre){
-        ArrayList<Book> books = cat.getAllBook();
-        cat.searchByGenre(genre);
-        ArrayList<Book> titles = cat.searchByGenre(genre);
-        return titles;
-    }
-*/
-    
     public boolean returnBook(Book bookL){
         boolean deleted = false;
         if(cat.validBook(bookL)){
@@ -278,4 +207,7 @@ public class Library {
         }
         return false;
     }
+
+    
+
 }

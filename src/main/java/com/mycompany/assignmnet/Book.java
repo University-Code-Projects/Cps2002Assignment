@@ -33,12 +33,15 @@ public class Book {
         this.yrOfPub = 0;
     }
     
+    /*
     public Book(int isbn, String title, String author, Genre genre) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.genre = genre;
     }
+    */
+    
     //delete a constructor
     public Book(int isbn, String title, String author, int edition, Genre genre, int yrOfPub) {
         this.isbn = isbn;

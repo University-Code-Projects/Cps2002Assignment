@@ -54,6 +54,7 @@ public class Catalogue {
         }
     }
     
+    /*
     public void printAllBook(){
         for(Book temp : book){
             System.out.print("\nBook Title: "+ temp.getTitle());
@@ -64,41 +65,9 @@ public class Catalogue {
             System.out.print("\tYear of Publication: "+ temp.getYrOfPub());
         }
     }
+    */
     
     public ArrayList<Book> getAllBook(){
         return book;
     }
-    
-    /*
-    public ArrayList<Book> searchByTitle(String name){
-        ArrayList<Book> titles = new ArrayList<Book>();
-        name = name.toLowerCase();
-        for(Book temp : book){
-            if(temp.getTitle().toLowerCase().contains(name)){
-                titles.add(temp);
-            }
-        }
-        return titles;
-    }
-    
-    public ArrayList<Book> searchByGenre(Genre genre){
-        ArrayList<Book> books = new ArrayList<Book>();
-        for(Book temp : book){
-            if(temp.getGenre() == genre){
-                books.add(temp);
-            }
-        }
-        return books;
-    }
-    
-    public ArrayList<Book> searchByYearOfPublication(int year){
-        ArrayList<Book> books = new ArrayList<Book>();
-        for(Book temp : book){
-            if(temp.getYrOfPub() == year){
-                books.add(temp);
-            }
-        }
-        return books;
-    }
-*/
 }
