@@ -51,12 +51,14 @@ public class Library {
         return null;
     }
     
+    
+    
     /*
     Instantiation of the class, to remove the 2 methods below, once implemented (due to test cases)
     to use the factory method.
     */
-    //to be nade generic instead of string
-   
+    //to be made generic instead of string
+   /*
     public interface searchForBooks<T>{
         ArrayList<Book> search(T t);
     }
@@ -85,7 +87,7 @@ public class Library {
         }
     }
     
-    
+    */
     
     public ArrayList<Book> searchByTitle(String name){
         ArrayList<Book> books = cat.getAllBook();
