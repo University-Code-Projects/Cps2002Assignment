@@ -134,7 +134,7 @@ public class Library {
     }
     
     */
-    
+    /*
     public ArrayList<Book> searchByTitle(String name){
         ArrayList<Book> books = cat.getAllBook();
         cat.searchByTitle(name);
@@ -149,7 +149,7 @@ public class Library {
         ArrayList<Book> titles = cat.searchByYearOfPublication(year);
         return titles;
     }
-    
+    */
     public boolean newUserInfo(String name, String surname, int id){
         User newUser = new User(name, surname, id);
         if(validUser(newUser)){

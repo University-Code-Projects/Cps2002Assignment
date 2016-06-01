@@ -261,9 +261,13 @@ public class LibraryTest {
         //actual = libr2.searchByTitle("Life in cs");
         
         boolean flag = true;
-        for(int i=0; i < actual.size(); i++){
-            if(!actual.get(i).getTitle().toLowerCase().contains("life in cs")){
-                flag = false;
+        if(actual.size() == 0){
+            flag = false;
+        }else{
+            for(int i=0; i < actual.size(); i++){
+                if(!actual.get(i).getTitle().toLowerCase().contains("life in cs")){
+                    flag = false;
+                }
             }
         }
         assertEquals(true, flag);
@@ -289,17 +293,21 @@ public class LibraryTest {
         //actual = libr2.searchByTitle("Life in cs");
         
         boolean flag = true;
-        for(int i=0; i < actual.size(); i++){
-            if(!actual.get(i).getTitle().toLowerCase().contains("life in ai")){
-                flag = false;
+        if(actual.size() == 0){
+            flag = false;
+        }else{
+            for(int i=0; i < actual.size(); i++){
+                if(!actual.get(i).getTitle().toLowerCase().contains("life in ai")){
+                    flag = false;
+                }
             }
         }
-        assertEquals(true, flag);//due to the ! on the if statement
+        assertEquals(false, flag);
     }
     
     @Test
     public void search_Year() {//returning a list of books having a the same Publish Year
-        ArrayList<Book> actual;
+        ArrayList<Book> actual = new ArrayList<Book>();
         
         Library libr2 = new Library();
         
@@ -313,16 +321,21 @@ public class LibraryTest {
         libr2.Book(1, book3);
         libr2.Book(1, book4);
         
-        actual = libr2.searchByYearOfPublication(2015);
+        actual = libr2.searchForBooks(libr2.getAllBook(), actual, "", 2015, genre);
+        //actual = libr2.searchByYearOfPublication(2015);
         
         //libr2.search(2015);
 
         
         
         boolean flag = true;
-        for(int i=0; i < actual.size(); i++){
-            if(actual.get(i).getYrOfPub() != 2015){
-                flag = false;
+        if(actual.size() == 0){
+            flag = false;
+        }else{
+            for(int i=0; i < actual.size(); i++){
+                if(actual.get(i).getYrOfPub() != 2015){
+                    flag = false;
+                }
             }
         }
         assertEquals(true, flag);
@@ -330,7 +343,7 @@ public class LibraryTest {
     
     @Test
     public void search_Year1() {//returning a list of books having a the same Publish Year
-        ArrayList<Book> actual;
+        ArrayList<Book> actual = new ArrayList<Book>();
         
         Library libr2 = new Library();
         
@@ -344,11 +357,16 @@ public class LibraryTest {
         libr2.Book(1, book3);
         libr2.Book(1, book4);
         
-        actual = libr2.searchByYearOfPublication(2015);
+        actual = libr2.searchForBooks(libr2.getAllBook(), actual, "", 2015, genre);
+        //actual = libr2.searchByYearOfPublication(2015);
         boolean flag = true;
-        for(int i=0; i < actual.size(); i++){
-            if(actual.get(i).getYrOfPub() != 2020){
-                flag = false;
+        if(actual.size() == 0){
+            flag = false;
+        }else{
+            for(int i=0; i < actual.size(); i++){
+                if(actual.get(i).getYrOfPub() != 2020){
+                    flag = false;
+                }
             }
         }
         assertEquals(false, flag);
@@ -384,7 +402,7 @@ public class LibraryTest {
     
     @Test
     public void search_Genre() {//returning a list of books having a the same Genre
-        ArrayList<Book> actual;
+        ArrayList<Book> actual = new ArrayList<Book>();
         
         Library libr2 = new Library();
         Genre genre1 = new Genre("Comedy");
@@ -400,11 +418,18 @@ public class LibraryTest {
         libr2.Book(1, book2);
         libr2.Book(1, book3);
         libr2.Book(1, book4);
-        actual = libr2.searchByGenre(genre1);
+        
+        actual = libr2.searchForBooks(libr2.getAllBook(), actual, "", 0, genre1);
+        //actual = libr2.searchByGenre(genre1);
+        
         boolean flag = true;
-        for(int i=0; i < actual.size(); i++){
-            if(actual.get(i).getGenre().getGenre() != genre1.getGenre()){
-                flag = false;
+        if(actual.size() == 0){
+            flag = false;
+        }else{    
+            for(int i=0; i < actual.size(); i++){
+                if(actual.get(i).getGenre().getGenre() != genre1.getGenre()){
+                    flag = false;
+                }
             }
         }
         assertEquals(true, flag);
@@ -412,7 +437,7 @@ public class LibraryTest {
     
     @Test
     public void search_Genre1() {//returning a list of books having a the same Genre
-        ArrayList<Book> actual;
+        ArrayList<Book> actual = new ArrayList<Book>();
         
         Library libr2 = new Library();
         Genre genre1 = new Genre("Comedy");
@@ -429,11 +454,17 @@ public class LibraryTest {
         libr2.Book(1, book3);
         libr2.Book(1, book4);
         
-        actual = libr2.searchByGenre(genre1);
+        actual = libr2.searchForBooks(libr2.getAllBook(), actual, "", 0, genre1);
+        //actual = libr2.searchByGenre(genre1);
+        
         boolean flag = true;
-        for(int i=0; i < actual.size(); i++){
-            if(actual.get(i).getGenre().getGenre() != genre2.getGenre()){
-                flag = false;
+        if(actual.size() == 0){
+            flag = false;
+        }else{
+            for(int i=0; i < actual.size(); i++){
+                if(actual.get(i).getGenre().getGenre() != genre2.getGenre()){
+                    flag = false;
+                }
             }
         }
         assertEquals(false, flag);
