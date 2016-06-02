@@ -1,37 +1,36 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
+/**
+ * Catalogue Class
+ * @author Jonathan Borg and Karl Farrugia
+ */
 package com.mycompany.assignmnet;
 import java.util.*;
-/**
- *
- * @author jonathan
- */
+
 public class Catalogue {
-    private ArrayList<Book> book ;
-    
+    private ArrayList<Book> book ;//all the books in the catalogue
+
+    //default constructor
     public Catalogue(){
         book = new ArrayList<Book>();
     }
     
+    //checks the information given against all previous books (isbn)
     public boolean newBookInfo(int isbn, String title, String author, int edition, Genre genre, int yrOfPub){
         Book newBook = new Book(isbn, title, author, edition, genre, yrOfPub);
-        if(validBook(newBook)){
+        if(validBook(newBook)){//if it is a valid book, it already exists
             System.err.println("Book already exists");
             return false;
         }else{
-            addBook(newBook);
+            addBook(newBook);//adding the book to the list using the addBook method
             return true;
         }
     }
     
+    //check if a book already exists
     public boolean validBook(Book check){
         int isbn = check.getIsbn();
         boolean flag = false;
         for(Book temp : book){
-            if(temp.getIsbn() == isbn){
+            if(temp.getIsbn() == isbn){//if isbn matches, the book already exists
                 flag = true;
                 break;
             }
@@ -39,13 +38,14 @@ public class Catalogue {
         return flag;
     }
     
-    
+    //adding the book to the array list
     public void addBook(Book newBook){
         book.add(newBook);
     }
     
+    //removing the book from the list
     public boolean removeBook(Book deleteBook){
-        if(validBook(deleteBook)){
+        if(validBook(deleteBook)){  //checking that the book is valid
             book.remove(deleteBook);
             return true;
         }else{
@@ -54,7 +54,9 @@ public class Catalogue {
         }
     }
     
+
     /*
+    //method used for debugging by displaying the books
     public void printAllBook(){
         for(Book temp : book){
             System.out.print("\nBook Title: "+ temp.getTitle());
@@ -66,7 +68,8 @@ public class Catalogue {
         }
     }
     */
-    
+
+    //returning all the books in the arrayList
     public ArrayList<Book> getAllBook(){
         return book;
     }
