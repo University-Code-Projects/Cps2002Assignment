@@ -1,30 +1,25 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
-package com.mycompany.assignmnet;
-
-import java.text.SimpleDateFormat;
-import java.util.*;
 /**
  *
- * @author jonathan
+ * @author Jonathan Borg and Karl Farrugia
  */
+package com.mycompany.assignmnet;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
 public class Book {
     
-    private int isbn;
-    private String title;
-    private String author;
-    private int edition;
-    private Genre genre;
-    private int yrOfPub;
-    private User loanTo;
-    private SimpleDateFormat loanDate;
-    private ArrayList<User> wantingBook;
+    //Variables needed for each differnt book
+    private int isbn;                   //Book Id
+    private String title;               //Book title
+    private String author;              //Book author
+    private int edition;                //Book edition number
+    private Genre genre;                //Book Genre
+    private int yrOfPub;                //Year of Publication of the Book
+    private User loanTo;                //To whom the book is loaned
+    private SimpleDateFormat loanDate;  //When the Book was loaned out
+    private ArrayList<User> wantingBook;//Users that are on the waiting list for the specific book
     
-    
-    
+    //default constructor
     public Book() {
         this.isbn = 0;
         this.title = "";
@@ -33,19 +28,11 @@ public class Book {
         this.genre = null;
         this.yrOfPub = 0;
         this.loanTo = null;
+        this.loanDate = new SimpleDateFormat("01/01/1999 12:00:00");
         this.wantingBook = new ArrayList<User>();
     }
     
-    /*
-    public Book(int isbn, String title, String author, Genre genre) {
-        this.isbn = isbn;
-        this.title = title;
-        this.author = author;
-        this.genre = genre;
-    }
-    */
-    
-    //delete a constructor
+    //constructor
     public Book(int isbn, String title, String author, int edition, Genre genre, int yrOfPub) {
         this.isbn = isbn;
         this.title = title;
@@ -54,9 +41,11 @@ public class Book {
         this.genre = genre;
         this.yrOfPub = yrOfPub;
         this.loanTo = null;
+        this.loanDate = new SimpleDateFormat("01/01/1999 12:00:00");
         this.wantingBook = new ArrayList<User>();
     }
     
+    //Getters
     public int getIsbn() {
         return isbn;
     }
@@ -93,6 +82,7 @@ public class Book {
         return wantingBook;
     }
     
+    //Setters
     public void setIsbn(int isbn) {
         this.isbn = isbn;
     }

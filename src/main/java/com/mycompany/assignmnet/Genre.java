@@ -1,21 +1,14 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
-package com.mycompany.assignmnet;
-
 /**
  *
- * @author jonathan
+ * @author Jonathan Borg and Karl Farrugia
  */
+package com.mycompany.assignmnet;
+
+//class used to create a Genre object
 public class Genre {
+    //all genres are strings
     String name;
-    /*
-    public Genre () {
-        
-    }
-    */
+    
     public Genre (String gen) {
         this.name = gen;
     }

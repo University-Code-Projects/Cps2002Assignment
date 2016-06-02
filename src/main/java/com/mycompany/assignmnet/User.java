@@ -1,27 +1,28 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
-package com.mycompany.assignmnet;
-import java.util.*;
-import java.text.SimpleDateFormat;
 /**
  *
- * @author jonathan
+ * @author Jonathan Borg and Karl Farrugia
  */
+package com.mycompany.assignmnet;
+import java.util.*;
+
 public class User {
     
-    private String name;
-    private String surname;
-    private int id;
-    private int libId;
-    private ArrayList<Book> loanBook;
+    //Variables needed for each differnt user
+    private String name;                //Name of the user
+    private String surname;             //Surname of the user
+    private int id;                     //Personal ID of the User
+    private int libId;                  //Library ID of the user, given automatically
+    private ArrayList<Book> loanBook;   //Number of Books the user loaned out on his name
     
+    //default constructor
     public User(){
+        this.name = "";
+        this.surname = "";
+        this.id = 0;
         loanBook = new ArrayList<Book>();
     }
     
+    //constructor
     public User(String name, String surname, int id) {
         this.name = name;
         this.surname = surname;
@@ -29,10 +30,7 @@ public class User {
         loanBook = new ArrayList<Book>();
     }
     
-    public void setUserId(int id){
-        this.libId = id;
-    }
-    
+    //Getters
     public String getName() {
         return name;
     }
@@ -53,6 +51,7 @@ public class User {
         return loanBook;
     }
     
+    //Setters
     public void setName(String name) {
         this.name = name;
     }
