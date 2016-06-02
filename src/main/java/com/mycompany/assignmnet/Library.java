@@ -27,6 +27,7 @@ public class Library {
         cat = catal;
     }
     
+    
     public void Book(int choice, Book book1){
         switch(choice){
             case 1 :
@@ -37,9 +38,6 @@ public class Library {
                 break;
             case 3 :
                 getBook(book1.getIsbn());
-                break;
-            default :
-                System.err.println("Invalid Entry");
                 break;
         }
     }
@@ -219,8 +217,8 @@ public class Library {
                         ArrayList<User> waitingUsers = temp.getWantingBook();                       
                         
                         if(!waitingUsers.isEmpty()){
+                            System.out.println("User: '" + waitingUsers.get(0).getName()+ "' with ID: '"+ waitingUsers.get(0).getId()+ "' now the book '" + temp.getTitle()+"' is available for borrowing");
                             waitingUsers.remove(0);
-                            System.out.println("User :" + waitingUsers.get(0)+ " now has the book " + temp.getTitle());
                         }
                         bookL.setWantingBook(waitingUsers);
                         return true;

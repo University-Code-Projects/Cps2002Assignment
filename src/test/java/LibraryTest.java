@@ -689,13 +689,18 @@ public class LibraryTest {
     
     @Test
     public void observer_Test_1(){
+        Library libr10 = new Library();
         Book book10 = new Book(99999, "Life in CS", "Karl Borg", 1, genre, year);
-        cat.addBook(book10);
-
-        libr.loanTo(book10, user, SimpleDateFormat);
-        libr.returnBook(book10);
-        libr.loanTo(book10, user2, SimpleDateFormat);
         
+        libr10.addUser(user);
+        libr10.addUser(user2);
+        cat.addBook(book10);
+        libr10.Catalogue(cat);
+
+        libr10.loanTo(book10, user, SimpleDateFormat);
+        libr10.loanTo(book10, user2, SimpleDateFormat);
+
+        libr10.returnBook(book10);
         ArrayList<User> waitingNoUsers = book10.getWantingBook();
         
         boolean flag = false;
