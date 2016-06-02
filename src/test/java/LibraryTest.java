@@ -1,8 +1,7 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
+/**
+ * Unit Test Class
+ * @author Jonathan Borg and Karl Farrugia
+ */
 
 import com.mycompany.assignmnet.Library;
 import com.mycompany.assignmnet.User;
@@ -11,7 +10,6 @@ import com.mycompany.assignmnet.Genre;
 import com.mycompany.assignmnet.*;
 import java.text.SimpleDateFormat;
 
-import java.util.*;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -20,10 +18,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author jonathan
- */
 public class LibraryTest {
     
     public LibraryTest() {
@@ -37,8 +31,7 @@ public class LibraryTest {
     public static void tearDownClass() {
     }
     
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
+    //generic objects created to be used during different unit tests
     Library libr = new Library();
     Library libr2 = new Library();
     User user = new User("Test Name", "Test surname",1);
@@ -55,10 +48,12 @@ public class LibraryTest {
     public void Library() {
         libr = new Library();
         libr2 = new Library();
+        
         user = new User("Test Name", "Test surname",1);
         user2 = new User("Test Name", "Test surname",8956);
         
         book = new Book(123, "Life in CS", "Karl Borg", 1, genre, year);
+        
         libr.addUser(user);
         cat.addBook(book);
     }
@@ -72,6 +67,7 @@ public class LibraryTest {
         user2 = null;
     }
     
+    //testing of setter and getting in User Class
     @Test
     public void set_Name() {
         user.setName("First Client Name");
@@ -140,6 +136,7 @@ public class LibraryTest {
         assertEquals(true,libr.validUser(user1));
     }
     
+     //testing of setter and getting Book Class    
     @Test
     public void set_Author() {
         book.setAuthor("Jonathan Farrugia");
@@ -342,7 +339,7 @@ public class LibraryTest {
     }
     
     @Test
-    public void search_Title() {//returning a list of books having a that title in their name
+    public void search_Title() {//returning a list of books having the same title as being checked, expected to succeed as title checked is title of one of the books
         ArrayList<Book> actual = new ArrayList<Book>();
         
         Library libr2 = new Library();
@@ -357,9 +354,7 @@ public class LibraryTest {
         libr2.Book(1, book3);
         libr2.Book(1, book4);
         
-        
         actual = libr2.searchForBooks(libr2.getAllBook(), actual, "Life in cs", year, genre);
-        //actual = libr2.searchByTitle("Life in cs");
         
         boolean flag = true;
         if(actual.size() == 0){
@@ -375,7 +370,7 @@ public class LibraryTest {
     }
     
     @Test
-    public void search_Title1() {//returning a list of books having a that title in their name
+    public void search_Title1() {//returning a list of books having the same title as being checked, expected to fail as title checked is not a title of one of the books
         ArrayList<Book> actual = new ArrayList<Book>();
         
         Library libr2 = new Library();
@@ -391,7 +386,6 @@ public class LibraryTest {
         libr2.Book(1, book4);
         
         actual = libr2.searchForBooks(libr2.getAllBook(), actual, "Life in cs", year, genre);
-        //actual = libr2.searchByTitle("Life in cs");
         
         boolean flag = true;
         if(actual.size() == 0){
@@ -405,9 +399,9 @@ public class LibraryTest {
         }
         assertEquals(false, flag);
     }
-    
+
     @Test
-    public void search_Year() {//returning a list of books having a the same Publish Year
+    public void search_Year() {//returning a list of books having the same Publish Year as being checked, expected to succeed as Publish Year checked is Publish Year of one of the books
         ArrayList<Book> actual = new ArrayList<Book>();
         
         Library libr2 = new Library();
@@ -423,11 +417,6 @@ public class LibraryTest {
         libr2.Book(1, book4);
         
         actual = libr2.searchForBooks(libr2.getAllBook(), actual, "", 2015, genre);
-        //actual = libr2.searchByYearOfPublication(2015);
-        
-        //libr2.search(2015);
-
-        
         
         boolean flag = true;
         if(actual.size() == 0){
@@ -443,7 +432,7 @@ public class LibraryTest {
     }
     
     @Test
-    public void search_Year1() {//returning a list of books having a the same Publish Year
+    public void search_Year1() {//returning a list of books having the same Publish Year as being checked, expected to fail as Publish Year checked is not Publish Year of one of the books
         ArrayList<Book> actual = new ArrayList<Book>();
         
         Library libr2 = new Library();
@@ -459,7 +448,7 @@ public class LibraryTest {
         libr2.Book(1, book4);
         
         actual = libr2.searchForBooks(libr2.getAllBook(), actual, "", 2015, genre);
-        //actual = libr2.searchByYearOfPublication(2015);
+
         boolean flag = true;
         if(actual.size() == 0){
             flag = false;
@@ -521,7 +510,6 @@ public class LibraryTest {
         libr2.Book(1, book4);
         
         actual = libr2.searchForBooks(libr2.getAllBook(), actual, "", 0, genre1);
-        //actual = libr2.searchByGenre(genre1);
         
         boolean flag = true;
         if(actual.size() == 0){
@@ -556,7 +544,6 @@ public class LibraryTest {
         libr2.Book(1, book4);
         
         actual = libr2.searchForBooks(libr2.getAllBook(), actual, "", 0, genre1);
-        //actual = libr2.searchByGenre(genre1);
         
         boolean flag = true;
         if(actual.size() == 0){
@@ -572,7 +559,7 @@ public class LibraryTest {
     }
     
     @Test
-    public void search_Books() {
+    public void search_Books() {//searching for a book by title, expected to succeed as title checked is one of the titles given (task 2 of assignment past 2)
         ArrayList<Book> actual = new ArrayList<Book>();
         
         Library libr2 = new Library();
@@ -611,7 +598,7 @@ public class LibraryTest {
     }
     
     @Test
-    public void search_Books_1() {
+    public void search_Books_1() {//searching for a book by title, expected to fail as title checked is not one of the titles given (task 2 of assignment past 2)
         ArrayList<Book> actual = new ArrayList<Book>();
         
         Library libr2 = new Library();
@@ -665,8 +652,7 @@ public class LibraryTest {
     }
     
     @Test
-    public void observer_Test() {
-        
+    public void observer_Test() {//checking the user in the waiting list for the book, expected to succeed as user is on the waiting list (task 3 of assignment past 2)
         Book book10 = new Book(99999, "Testing for observer", "Karl Borg", 1, genre, year);
         ArrayList<User> users = new ArrayList<User>();
         users.add(user);
@@ -690,8 +676,7 @@ public class LibraryTest {
     }
     
     @Test
-    public void observer_Test_1(){
-        
+    public void observer_Test_1(){//checking the user in the waiting list for the book, expected to succeed as there are no users in the waiting list (task 3 of assignment past 2)       
         Book book10 = new Book(99999, "Life in CS", "Karl Borg", 1, genre, year);
         
         ArrayList<User> users = new ArrayList<User>();
