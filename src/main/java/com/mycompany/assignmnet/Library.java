@@ -1,32 +1,27 @@
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
+/**
+ * Library Class
+ * @author Jonathan Borg and Karl Farrugia
+ */
 package com.mycompany.assignmnet;
-
 import java.util.*;
 import java.text.*;
 
-/**
- *
- * @author jonathan
- */
 public class Library {
-    private ArrayList<Book> book;
-    private Catalogue cat;
-    private ArrayList<User> users;
+    //Variables that the Library Stores in it
+    private Catalogue cat;              //Library can have only 1 catalogue
+    private ArrayList<User> users;      //List of users in the library
     
+    //Default Constructor
     public Library(){
         users = new ArrayList<User>();
-        book = new ArrayList<Book>();
         cat = new Catalogue();
     }
-       
-    public void Catalogue(Catalogue catal){
-        cat = catal;
+
+    //Constructor to set the library with a default set of users and number of books in catalogue
+     public Library(ArrayList<User> users,Catalogue cat){
+        this.users = users;
+        this.cat = cat;
     }
-    
     
     public void Book(int choice, Book book1){
         switch(choice){
@@ -190,15 +185,6 @@ public class Library {
                     return false;
                 }
             }
-            /*
-            if((book.getLoanTo() != null)){
-                System.out.println("Entered");
-                ArrayList<User> waitingUsers = book.getWantingBook();
-                waitingUsers.add(user);
-                book.setWantingBook(waitingUsers);
-                return false;
-            }
-            */
             return false;
          }else{
             return false;
@@ -228,7 +214,4 @@ public class Library {
         }
         return false;
     }
-
-    
-
 }

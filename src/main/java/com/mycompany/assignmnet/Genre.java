@@ -1,5 +1,5 @@
 /**
- *
+ * Genre Class
  * @author Jonathan Borg and Karl Farrugia
  */
 package com.mycompany.assignmnet;

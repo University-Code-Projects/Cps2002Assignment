@@ -666,13 +666,15 @@ public class LibraryTest {
     
     @Test
     public void observer_Test() {
-        Library libr10 = new Library();
-        Book book10 = new Book(99999, "Testing for observer", "Karl Borg", 1, genre, year);
         
-        libr10.addUser(user);
-        libr10.addUser(user2);
+        Book book10 = new Book(99999, "Testing for observer", "Karl Borg", 1, genre, year);
+        ArrayList<User> users = new ArrayList<User>();
+        users.add(user);
+        users.add(user2);
+        
         cat.addBook(book10);
-        libr10.Catalogue(cat);        
+        
+        Library libr10 = new Library(users,cat);
         
         libr10.loanTo(book10, user, SimpleDateFormat);
         libr10.loanTo(book10, user2, SimpleDateFormat);
@@ -689,13 +691,15 @@ public class LibraryTest {
     
     @Test
     public void observer_Test_1(){
-        Library libr10 = new Library();
+        
         Book book10 = new Book(99999, "Life in CS", "Karl Borg", 1, genre, year);
         
-        libr10.addUser(user);
-        libr10.addUser(user2);
+        ArrayList<User> users = new ArrayList<User>();
+        users.add(user);
+        users.add(user2);
+        
         cat.addBook(book10);
-        libr10.Catalogue(cat);
+        Library libr10 = new Library(users,cat);
 
         libr10.loanTo(book10, user, SimpleDateFormat);
         libr10.loanTo(book10, user2, SimpleDateFormat);
