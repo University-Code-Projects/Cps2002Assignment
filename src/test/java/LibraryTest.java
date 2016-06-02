@@ -46,6 +46,7 @@ public class LibraryTest {
     Catalogue cat = new Catalogue();
     Book book = new Book();
     Genre genre = new Genre("Horror");
+    Genre genre01 = new Genre("Comedy");
     SimpleDateFormat SimpleDateFormat = new SimpleDateFormat("02/28/2012 12:00:00");
     int year = 2015;
     int year2 = 1996;
@@ -70,6 +71,7 @@ public class LibraryTest {
         user = null;
         user2 = null;
     }
+    
     @Test
     public void add_User() {//adding a new user with different id
         assertEquals(true,libr.newUserInfo("Test Name", "Test surname",2));
@@ -103,6 +105,72 @@ public class LibraryTest {
     public void valid_User1() {//checking for a valid user
         User user1 = new User("Test Name", "Test surname",1);
         assertEquals(true,libr.validUser(user1));
+    }
+    
+    @Test
+    public void set_Author() {
+        book.setAuthor("Jonathan Farrugia");
+        boolean flag = false;
+        if(book.getAuthor() == "Jonathan Farrugia"){
+            flag = true;
+        }
+        assertEquals(true,flag);
+        book.setAuthor("Karl Borg");
+    }
+    
+    @Test
+    public void set_Edition() {
+        book.setEdition(2);
+        boolean flag = false;
+        if(book.getEdition() == 2){
+            flag = true;
+        }
+        assertEquals(true,flag);
+        book.setEdition(1);
+    }
+    
+    @Test
+    public void set_Genre() {
+        book.setGenre(genre01);
+        boolean flag = false;
+        if(book.getGenre() == genre01){
+            flag = true;
+        }
+        assertEquals(true,flag);
+        book.setGenre(genre);
+    }
+    
+    @Test
+    public void set_Isbn() {
+        book.setIsbn(456);
+        boolean flag = false;
+        if(book.getIsbn() == 456){
+            flag = true;
+        }
+        assertEquals(true,flag);
+        book.setIsbn(123);
+    }
+    
+    @Test
+    public void set_Title() {
+        book.setTitle("Life in UoM");
+        boolean flag = false;
+        if(book.getTitle() == "Life in UoM"){
+            flag = true;
+        }
+        assertEquals(true,flag);
+        book.setTitle("Life in CS");
+    }
+    
+    @Test
+    public void set_Year() {
+        book.setYrOfPub(2016);
+        boolean flag = false;
+        if(book.getYrOfPub() == 2016){
+            flag = true;
+        }
+        assertEquals(true,flag);
+        book.setYrOfPub(year);
     }
     
     @Test
