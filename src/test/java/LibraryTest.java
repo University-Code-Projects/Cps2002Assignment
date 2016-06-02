@@ -73,6 +73,39 @@ public class LibraryTest {
     }
     
     @Test
+    public void set_Name() {
+        user.setName("First Client Name");
+        boolean flag = false;
+        if(user.getName() == "First Client Name"){
+            flag = true;
+        }
+        user.setName("Test Name");
+        assertEquals(true,flag);
+    }
+    
+    @Test
+    public void set_Surame() {
+        user.setSurname("First Client Surname");
+        boolean flag = false;
+        if(user.getSurname() == "First Client Surname"){
+            flag = true;
+        }
+        user.setSurname("Test surname");
+        assertEquals(true,flag);
+    }
+    
+    @Test
+    public void set_Id() {
+        user.setId(159);
+        boolean flag = false;
+        if(user.getId() == 159){
+            flag = true;
+        }
+        user.setId(1);
+        assertEquals(true,flag);
+    }
+    
+    @Test
     public void add_User() {//adding a new user with different id
         assertEquals(true,libr.newUserInfo("Test Name", "Test surname",2));
     }
@@ -114,8 +147,8 @@ public class LibraryTest {
         if(book.getAuthor() == "Jonathan Farrugia"){
             flag = true;
         }
-        assertEquals(true,flag);
         book.setAuthor("Karl Borg");
+        assertEquals(true,flag);
     }
     
     @Test
@@ -125,8 +158,8 @@ public class LibraryTest {
         if(book.getEdition() == 2){
             flag = true;
         }
-        assertEquals(true,flag);
         book.setEdition(1);
+        assertEquals(true,flag);
     }
     
     @Test
@@ -136,8 +169,8 @@ public class LibraryTest {
         if(book.getGenre() == genre01){
             flag = true;
         }
-        assertEquals(true,flag);
         book.setGenre(genre);
+        assertEquals(true,flag);
     }
     
     @Test
@@ -147,8 +180,8 @@ public class LibraryTest {
         if(book.getIsbn() == 456){
             flag = true;
         }
-        assertEquals(true,flag);
         book.setIsbn(123);
+        assertEquals(true,flag);
     }
     
     @Test
@@ -158,8 +191,8 @@ public class LibraryTest {
         if(book.getTitle() == "Life in UoM"){
             flag = true;
         }
-        assertEquals(true,flag);
         book.setTitle("Life in CS");
+        assertEquals(true,flag);
     }
     
     @Test
@@ -169,8 +202,8 @@ public class LibraryTest {
         if(book.getYrOfPub() == 2016){
             flag = true;
         }
-        assertEquals(true,flag);
         book.setYrOfPub(year);
+        assertEquals(true,flag);
     }
     
     @Test
