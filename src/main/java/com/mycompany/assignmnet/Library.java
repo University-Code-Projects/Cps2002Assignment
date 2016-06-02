@@ -23,6 +23,10 @@ public class Library {
         cat = new Catalogue();
     }
        
+    public void Catalogue(Catalogue catal){
+        cat = catal;
+    }
+    
     public void Book(int choice, Book book1){
         switch(choice){
             case 1 :
@@ -174,21 +178,29 @@ public class Library {
                 }
             }
             
-            if(flag && book.getLoanTo() == null){
-                if(user.getLoanBook().size() < 3){
-                    book.setLoan(user, loanDate);
-                    user.setLoanBook(book);
-                    System.out.println("Entered123");
-                    return true;               
+            if(flag){
+                if(book.getLoanTo() == null){
+                    if(user.getLoanBook().size() < 3){
+                        book.setLoan(user, loanDate);
+                        user.setLoanBook(book);
+                        return true;               
+                    }
+                }else{
+                    ArrayList<User> waitingUsers = book.getWantingBook();
+                    waitingUsers.add(user);
+                    book.setWantingBook(waitingUsers);
+                    return false;
                 }
             }
-            
+            /*
             if((book.getLoanTo() != null)){
                 System.out.println("Entered");
                 ArrayList<User> waitingUsers = book.getWantingBook();
                 waitingUsers.add(user);
                 book.setWantingBook(waitingUsers);
+                return false;
             }
+            */
             return false;
          }else{
             return false;
@@ -204,15 +216,11 @@ public class Library {
                     if(temp == bookL){
                         loanedBooks.remove(temp);
                         temp.setLoan(null, null);
-                        
                         ArrayList<User> waitingUsers = temp.getWantingBook();                       
                         
                         if(!waitingUsers.isEmpty()){
-                        
                             waitingUsers.remove(0);
-                        
                             System.out.println("User :" + waitingUsers.get(0)+ " now has the book " + temp.getTitle());
-                        
                         }
                         bookL.setWantingBook(waitingUsers);
                         return true;

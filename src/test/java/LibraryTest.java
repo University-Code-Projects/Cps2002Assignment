@@ -565,30 +565,37 @@ public class LibraryTest {
     
     @Test
     public void observer_Test() {
-        Book book10 = new Book(99999, "Life in CS", "Karl Borg", 1, genre, year);
+        Library libr10 = new Library();
+        Book book10 = new Book(99999, "Testing for observer", "Karl Borg", 1, genre, year);
         
-        libr.loanTo(book10, user, SimpleDateFormat);
-        libr.loanTo(book10, user2, SimpleDateFormat);
-        ArrayList<User> waitingNoUsers = book.getWantingBook();
+        libr10.addUser(user);
+        libr10.addUser(user2);
+        cat.addBook(book10);
+        libr10.Catalogue(cat);        
+        
+        libr10.loanTo(book10, user, SimpleDateFormat);
+        libr10.loanTo(book10, user2, SimpleDateFormat);
+        ArrayList<User> waitingNoUsers = book10.getWantingBook();
         
         boolean flag = false;
         if(waitingNoUsers.size() == 1){
-            flag = true;
+            if(waitingNoUsers.get(0).getId() == 8956){
+                flag = true;
+            }
         }
         assertEquals(true,flag);
     }
     
     @Test
     public void observer_Test_1(){
-        Book book1 = new Book(99999, "Life in CS", "Karl Borg", 1, genre, year);
-        Book book2 = new Book(88888, "Life in CS", "Karl Borg", 1, genre, year);
+        Book book10 = new Book(99999, "Life in CS", "Karl Borg", 1, genre, year);
+        cat.addBook(book10);
+
+        libr.loanTo(book10, user, SimpleDateFormat);
+        libr.returnBook(book10);
+        libr.loanTo(book10, user2, SimpleDateFormat);
         
-        libr.loanTo(book1, user, SimpleDateFormat);
-        libr.loanTo(book1, user2, SimpleDateFormat);
-        
-        libr.returnBook(book1);
-        ArrayList<User> waitingNoUsers = book.getWantingBook();
-        
+        ArrayList<User> waitingNoUsers = book10.getWantingBook();
         
         boolean flag = false;
         if(waitingNoUsers.size() == 0){

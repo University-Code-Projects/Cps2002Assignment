@@ -19,6 +19,7 @@ public class User {
     private ArrayList<Book> loanBook;
     
     public User(){
+        loanBook = new ArrayList<Book>();
     }
     
     public User(String name, String surname, int id) {
